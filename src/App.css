@@ -11,7 +11,7 @@ body {
 .root {
   overflow: hidden;
 }
-.vert-graph {
+.vert-bg {
   position: fixed;
   top: 0;
   width: 100%;
@@ -29,7 +29,7 @@ body {
   margin-top: 20.1em;
   transform: perspective(200px) rotateX(15deg) scale(4);
 }
-.graph {
+.bg {
   position: fixed;
   top: 0;
   width: 100%;
@@ -58,34 +58,82 @@ body {
   }
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
+.body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 16% 68% 16%;
+  grid-template-rows: 20% 75% auto;
+  grid-template-areas:
+    "title title title"
+    "nav content ."
+    "bottom bottom bottom";
 }
 
 .title-container {
-  padding-top: 10px;
+  /* margin-top: 50px; */
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  flex-wrap: wrap;
+  grid-area: title;
 }
 
 .title {
+  font-size: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: 0;
   text-align: center;
   font-family: "Righteous", cursive;
   letter-spacing: 5px;
-  font-size: 90px;
   -webkit-text-stroke: 2px #ffb7f3;
 
   background: -webkit-linear-gradient(#fff 25%, #111 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .alt-title {
   text-align: center;
   letter-spacing: 5px;
   font-size: 90px;
   color: #ffb7f3;
+}
+
+.nav-menu {
+  background-color: #f8f8f8;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 1000px;
+  grid-area: nav;
+}
+
+.content {
+  background-color: aqua;
+  grid-area: content;
+}
+
+.bottom {
+  background-color: blueviolet;
+  grid-area: bottom;
+}
+
+@media only screen and (max-width: 725px) {
+  .title-container {
+    flex-direction: column;
+  }
+  .title {
+    font-size: 70px;
+  }
+  .body {
+    grid-template-rows: 20% 5% 70% auto;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "title"
+      "nav"
+      "content"
+      "bottom";
+  }
 }
