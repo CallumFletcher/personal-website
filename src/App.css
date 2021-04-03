@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+
+body {
+  margin: 0;
+  background: rgba(13, 2, 33, 1);
+  height: 100vh;
+  font-family: "Saira", sans-serif;
+  font-weight: 700;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.root {
+  overflow: hidden;
 }
+.vert-graph {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(247, 6, 207, 0.2) 0%,
+    rgba(247, 6, 207, 0.2) 2px,
+    rgba(0, 0, 0, 0) 0px
+  );
+  background-size: 4em 2em, 4em 2em;
+  height: 40em;
+  perspective: 1000px;
+  margin-top: 20.1em;
+  transform: perspective(200px) rotateX(15deg) scale(4);
+}
+.graph {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(247, 6, 207, 0.2) 0%,
+    rgba(247, 6, 207, 0.2) 2px,
+    rgba(0, 0, 0, 0) 0px
+  );
+  background-size: 4em 2em, 4em 2em;
+  height: 40em;
+  margin-top: 20em;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  perspective: 1000px;
+  transform: perspective(200px) rotateX(15deg) scale(4);
+  animation: moving-grid 2s infinite linear;
+}
+@keyframes moving-grid {
+  0% {
+    transform: perspective(200px) rotateX(15deg) scale(4) translateY(0em);
+  }
+  100% {
+    transform: perspective(200px) rotateX(15deg) scale(4) translateY(2em);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.title-container {
+  padding-top: 10px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.title {
+  margin: 0;
+  text-align: center;
+  font-family: "Righteous", cursive;
+  letter-spacing: 5px;
+  font-size: 90px;
+  -webkit-text-stroke: 2px #ffb7f3;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background: -webkit-linear-gradient(#fff 25%, #111 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.alt-title {
+  text-align: center;
+  letter-spacing: 5px;
+  font-size: 90px;
+  color: #ffb7f3;
 }

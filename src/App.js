@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="root">
+      <div className="content">
+        <div className="title-container">
+          <h1 className="title">Callum</h1>
+          {/* get rid of padding on smaller screen */}
+          <h1 className="title" style={{ paddingLeft: 20 }}>
+            Fletcher
+          </h1>
+        </div>
+      </div>
+      <div className="graph" />
+      <div className="vert-graph" />
     </div>
   );
 }
