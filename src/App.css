@@ -59,6 +59,7 @@ body {
 }
 
 .body {
+  position: fixed;
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -102,21 +103,21 @@ body {
 }
 
 .nav-menu {
-  background-color: #f8f8f8;
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  top: 1000px;
-  grid-area: nav;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+  flex-direction: column;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
 }
 
 .content {
-  background-color: aqua;
   grid-area: content;
 }
 
 .bottom {
-  background-color: blueviolet;
   grid-area: bottom;
 }
 
@@ -135,5 +136,11 @@ body {
       "nav"
       "content"
       "bottom";
+  }
+  .nav-menu {
+    grid-area: nav;
+    gap: 0;
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
