@@ -6,9 +6,15 @@ function NavMenu() {
     <>
       <div className="active-page"></div>
       {/* pointerEvents: "none" for active page */}
-      <h3 className="page">About</h3>
-      <h3 className="page">Portfolio</h3>
-      <h3 className="page">Contact</h3>
+      <h3 className="page">
+        <a href="#about">About</a>
+      </h3>
+      <h3 className="page">
+        <a href="#portfolio">Portfolio</a>
+      </h3>
+      <h3 className="page">
+        <a href="#contact">Contact</a>
+      </h3>
     </>
   );
 }

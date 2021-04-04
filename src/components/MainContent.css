@@ -1,0 +1,15 @@
+.section {
+  height: 65vh;
+  overflow: hidden;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.text {
+  color: white;
+}
+@media only screen and (max-width: 725px) {
+  .section {
+    height: 65vh;
+  }
+}

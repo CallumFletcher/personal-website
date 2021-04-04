@@ -63,8 +63,8 @@ body {
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 16% 68% 16%;
-  grid-template-rows: 20% 75% auto;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 20% 65% auto;
   grid-template-areas:
     "title title title"
     "nav content ."
@@ -103,10 +103,11 @@ body {
 }
 
 .nav-menu {
+  padding-left: 20%;
   display: flex;
   justify-content: center;
   gap: 40px;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   grid-row-start: 1;
   grid-row-end: 3;
@@ -114,7 +115,21 @@ body {
 }
 
 .content {
+  min-width: 500px;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
   grid-area: content;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.conent {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .bottom {
@@ -126,10 +141,10 @@ body {
     flex-direction: column;
   }
   .title {
-    font-size: 70px;
+    font-size: 65px;
   }
   .body {
-    grid-template-rows: 20% 5% 70% auto;
+    grid-template-rows: 15% 5% 70% auto;
     grid-template-columns: 100%;
     grid-template-areas:
       "title"
@@ -138,9 +153,19 @@ body {
       "bottom";
   }
   .nav-menu {
+    padding-left: 0;
+    align-items: center;
     grid-area: nav;
     gap: 0;
     flex-direction: row;
     justify-content: space-around;
+  }
+  .content {
+    min-width: 0px;
+    margin: 20px;
+  }
+  .section {
+    height: 70vh;
+    color: blueviolet;
   }
 }

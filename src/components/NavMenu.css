@@ -1,8 +1,9 @@
 .active-page {
+  margin-left: -6px;
   z-index: -1;
   position: absolute;
-  width: 155px;
-  height: 56px;
+  width: 125px;
+  height: 50px;
 
   background: linear-gradient(
       180deg,
@@ -18,7 +19,7 @@
   color: #ffb7f3;
 }
 
-h3 {
+a {
   text-decoration: none;
   position: relative;
   display: block;
@@ -27,17 +28,17 @@ h3 {
   font-size: 1.2rem;
   text-transform: uppercase;
   transition: color 0.1s, background-color 0.1s;
-  color: #000;
-}
-h3:hover {
   color: #ffb7f3;
 }
-h3:focus,
+a:hover {
+  color: #ffb7f3;
+}
+a:focus,
 a:active {
   color: #ffb7f3;
 }
 
-h3::before {
+a::before {
   content: "";
   display: block;
   position: absolute;
@@ -55,8 +56,8 @@ h3::before {
     -webkit-transform 0.2s ease-out;
 }
 
-h3:hover::before,
-h3:focus::before {
+a:hover::before,
+a:focus::before {
   -webkit-transform-origin: center top;
   transform-origin: center top;
   -webkit-transform: scale(1, 1);
@@ -64,7 +65,7 @@ h3:focus::before {
 }
 
 @media only screen and (max-width: 725px) {
-  h3 {
+  a {
     font-size: 16px;
   }
 }
