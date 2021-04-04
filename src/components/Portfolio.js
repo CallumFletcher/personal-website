@@ -1,5 +1,5 @@
 import { Fade } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React from "react";
 import "./MainContent.css";
 
 function Portfolio({ portfolioRef, portfolioInView }) {

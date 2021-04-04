@@ -7,7 +7,6 @@ import { useInView } from "react-intersection-observer";
 
 function App() {
   const titleBreakpoint = useMediaQuery("(min-width:725px)");
-  console.log(titleBreakpoint);
   const [aboutRef, aboutInView] = useInView({
     threshold: 0.1,
   });
@@ -21,7 +20,6 @@ function App() {
     e.preventDefault();
     e.stopPropagation();
   }
-  console.log(aboutInView, portfolioInView, contactInView);
   return (
     <div className="root">
       <div className="bg" />
