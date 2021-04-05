@@ -68,7 +68,7 @@ body {
   grid-template-areas:
     "title title title"
     "nav content ."
-    "bottom bottom bottom";
+    ". bottom .";
 }
 
 .title-container {
@@ -92,6 +92,7 @@ body {
 
   background: -webkit-linear-gradient(#fff 25%, #111 90%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -127,16 +128,20 @@ body {
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.conent {
+.content {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 
 .bottom {
   grid-area: bottom;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-@media only screen and (max-width: 725px) {
+@media only screen and (max-width: 750px) {
   .title-container {
     flex-direction: column;
   }

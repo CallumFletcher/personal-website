@@ -46,15 +46,10 @@ function NavMenu({ aboutInView, portfolioInView, contactInView }) {
     }
   }, [selectedPage, dimensions]);
   useEffect(() => {
-    console.log(aboutInView, portfolioInView, contactInView);
     function multipleInView(a, b, c) {
-      if ((a && b) || (a && c) || (b && c)) {
-        return true;
-      }
-      return false;
+      return (a && b) || (a && c) || (b && c);
     }
     if (!multipleInView(aboutInView, portfolioInView, contactInView)) {
-      console.log("passed");
       if (aboutInView) setSelectedPage(aboutRef);
       if (portfolioInView) setSelectedPage(portfolioRef);
       if (contactInView) setSelectedPage(contactRef);
@@ -64,13 +59,25 @@ function NavMenu({ aboutInView, portfolioInView, contactInView }) {
     <>
       <div className="active-page" style={activePagePosition}></div>
       {/* pointerEvents: "none" for active page */}
-      <h3 className="page" ref={aboutRef}>
+      <h3
+        className="page"
+        ref={aboutRef}
+        style={aboutInView ? { pointerEvents: "none" } : {}}
+      >
         <a href="#about">About</a>
       </h3>
-      <h3 className="page" ref={portfolioRef}>
-        <a href="#portfolio">Portfolio</a>
+      <h3
+        className="page"
+        ref={portfolioRef}
+        style={portfolioInView ? { pointerEvents: "none" } : {}}
+      >
+        <a href="#portfolio">My Work</a>
       </h3>
-      <h3 className="page" ref={contactRef}>
+      <h3
+        className="page"
+        ref={contactRef}
+        style={contactInView ? { pointerEvents: "none" } : {}}
+      >
         <a href="#contact">Contact</a>
       </h3>
     </>

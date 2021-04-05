@@ -1,12 +1,13 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./App.css";
 import { useMediaQuery } from "@material-ui/core";
 import NavMenu from "./components/NavMenu";
 import MainContent from "./components/MainContent";
 import { useInView } from "react-intersection-observer";
+import BottomBar from "./components/BottomBar";
 
 function App() {
-  const titleBreakpoint = useMediaQuery("(min-width:725px)");
+  const titleBreakpoint = useMediaQuery("(min-width:750px)");
   const [aboutRef, aboutInView] = useInView({
     threshold: 0.1,
   });
@@ -51,7 +52,9 @@ function App() {
             contactInView={contactInView}
           />
         </div>
-        <div className="bottom"></div>
+        <div className="bottom">
+          <BottomBar />
+        </div>
       </div>
     </div>
   );
