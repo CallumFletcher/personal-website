@@ -8,7 +8,7 @@ import BottomBar from "./components/BottomBar";
 
 function App() {
   const ref = useRef();
-  const [sunHeight, setSunHeight] = useState(0);
+  const [sunHeight, setSunHeight] = useState(200);
   const titleBreakpoint = useMediaQuery("(min-width:750px)");
   const [aboutRef, aboutInView] = useInView({
     threshold: 0.1,
@@ -26,12 +26,24 @@ function App() {
   }, [contactInView, portfolioInView, aboutInView, titleBreakpoint]);
   return (
     <div className="root">
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div className="sun" style={{ top: sunHeight }} />
+      <div className="bg-grid">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gridArea: "sun",
+            zIndex: 25,
+            background: "#0d0221",
+            overflow: "hidden",
+          }}
+        >
+          <div className="sun" style={{ marginTop: sunHeight }} />
+        </div>
+        <div className="sun-horizon" />
+        <div className="bg" />
+        <div className="vert-bg" />
       </div>
-      <div className="sun-horizon" />
-      <div className="bg" />
-      <div className="vert-bg" />
+
       <div className="body">
         <div className="title-container">
           {titleBreakpoint ? (

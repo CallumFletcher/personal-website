@@ -11,25 +11,31 @@ body {
 .root {
   overflow: hidden;
 }
-.sun-horizon {
-  background: rgba(13, 2, 33, 1);
-
+.bg-grid {
   position: fixed;
-  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20% 80%;
+  grid-template-areas:
+    "sun"
+    "bg";
+}
+.sun-horizon {
+  grid-area: bg;
+  background: rgba(13, 2, 33, 1);
+  bottom: 0;
   width: 100%;
-  height: 20px;
-  background-size: 4em 2em, 4em 2em;
-  height: 40em;
-  perspective: 1000px;
-  margin-top: 20em;
-  transform: perspective(200px) rotateX(15deg) scale(4);
+  /* background-size: 4em 2em, 4em 2em; */
+  height: 100%;
+  /* perspective: 1000px; */
+  /* margin-top: 20em; */
 }
 .sun {
   width: 200px;
   height: 200px;
   border-radius: 100%;
-  top: 0px;
-  position: absolute;
   background-color: yellow;
   background-image: linear-gradient(red, yellow), linear-gradient(black, white);
   clip-path: polygon(
@@ -62,14 +68,13 @@ body {
     150% 150%,
     0 150%
   );
-  transition: top 3s;
+  transition: all 3s;
 }
 
 .vert-bg {
-  position: fixed;
-  top: 0;
+  margin-top: 8em;
+  grid-area: bg;
   width: 100%;
-  height: 20px;
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0) 0px,
@@ -78,14 +83,13 @@ body {
     rgba(0, 0, 0, 0) 0px
   );
   background-size: 4em 2em, 4em 2em;
-  height: 40em;
+  height: 100%;
   perspective: 1000px;
-  margin-top: 20em;
   transform: perspective(200px) rotateX(15deg) scale(4);
 }
 .bg {
-  position: fixed;
-  top: 0;
+  margin-top: 8em;
+  grid-area: bg;
   width: 100%;
   height: 100%;
   background: linear-gradient(
@@ -96,8 +100,7 @@ body {
     rgba(0, 0, 0, 0) 0px
   );
   background-size: 4em 2em, 4em 2em;
-  height: 40em;
-  margin-top: 20em;
+  height: 100%;
 
   perspective: 1000px;
   transform: perspective(200px) rotateX(15deg) scale(4);
@@ -142,12 +145,13 @@ body {
   text-align: center;
   font-family: "Righteous", cursive;
   letter-spacing: 5px;
-  -webkit-text-stroke: 2px #ffb7f3;
 
-  background: -webkit-linear-gradient(#fff 25%, #111 90%);
+  /* background: -webkit-linear-gradient(#fff 25%, #111 90%); */
+  /*   
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  color: #ffb7f3;
 }
 
 .alt-title {
@@ -201,20 +205,20 @@ body {
     font-size: 65px;
   }
   .bg {
-    margin-top: 16em;
   }
   .vert-bg {
-    margin-top: 16em;
   }
   .sun-horizon {
-    margin-top: 16em;
+    /* margin-top: 16em; */
+    /* height: 0vh; */
+    height: calc(100vh - 100px);
   }
   .sun {
     height: 120px;
     width: 120px;
   }
   .body {
-    grid-template-rows: 120px 5% 65% auto;
+    grid-template-rows: 20% 5% 65% auto;
     grid-template-columns: 100%;
     grid-template-areas:
       "title"
