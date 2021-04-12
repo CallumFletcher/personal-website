@@ -1,0 +1,34 @@
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #ffb7f3;
+  flex-grow: 99;
+}
+
+.icon {
+  fill: #ffb7f3;
+  width: 36px;
+  height: 36px;
+}
+
+.material-icon {
+  padding-left: 10px;
+  color: #ffb7f3;
+}
+
+.button-text {
+  color: #ffb7f3;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 750px) {
+  .icon {
+    height: 24px;
+    width: 24px;
+  }
+  .button-text {
+    font-size: 14px;
+  }
+}
