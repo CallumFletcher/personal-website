@@ -3,10 +3,16 @@
   overflow: hidden;
   scroll-snap-align: center;
   scroll-snap-stop: always;
+  display: flex;
+  justify-content: center;
 }
 
 .text {
   color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: lighter;
+  text-align: center;
 }
 @media only screen and (max-width: 750px) {
   .section {

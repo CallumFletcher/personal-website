@@ -26,7 +26,14 @@ function BottomBar() {
       >
         <LinkedinIcon className="icon" />
       </IconButton>
-      <Button>
+      <Button
+        onClick={() =>
+          window.open(
+            "https://drive.google.com/file/d/1jeVzpBuh0DKiJLUEBXJP3ooMURrzgBBR/view?usp=sharing",
+            "_blank"
+          )
+        }
+      >
         <p className="button-text">Resume</p>
         <DescriptionIcon
           className="material-icon"
