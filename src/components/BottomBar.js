@@ -30,7 +30,7 @@ function BottomBar() {
         <p className="button-text">Resume</p>
         <DescriptionIcon
           className="material-icon"
-          style={breakpoint ? { fontSize: 41 } : { fontSize: 29 }}
+          style={breakpoint ? { fontSize: 36 } : { fontSize: 24 }}
         />
       </Button>
       <Button
@@ -41,7 +41,7 @@ function BottomBar() {
         <p className="button-text">Email</p>
         <EmailIcon
           className="material-icon"
-          style={breakpoint ? { fontSize: 41 } : { fontSize: 29 }}
+          style={breakpoint ? { fontSize: 36 } : { fontSize: 24 }}
         />
       </Button>
     </div>

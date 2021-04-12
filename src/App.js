@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { useMediaQuery } from "@material-ui/core";
 import NavMenu from "./components/NavMenu";
@@ -7,6 +7,8 @@ import { useInView } from "react-intersection-observer";
 import BottomBar from "./components/BottomBar";
 
 function App() {
+  const ref = useRef();
+  const [sunHeight, setSunHeight] = useState(0);
   const titleBreakpoint = useMediaQuery("(min-width:750px)");
   const [aboutRef, aboutInView] = useInView({
     threshold: 0.1,
@@ -17,12 +19,17 @@ function App() {
   const [contactRef, contactInView] = useInView({
     threshold: 0.1,
   });
-  function handleScroll(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
+  useEffect(() => {
+    if (aboutInView) setSunHeight(200);
+    else if (portfolioInView) setSunHeight(titleBreakpoint ? 80 : 50);
+    else if (contactInView) setSunHeight(0);
+  }, [contactInView, portfolioInView, aboutInView, titleBreakpoint]);
   return (
     <div className="root">
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className="sun" style={{ top: sunHeight }} />
+      </div>
+      <div className="sun-horizon" />
       <div className="bg" />
       <div className="vert-bg" />
       <div className="body">
@@ -42,7 +49,7 @@ function App() {
             contactInView={contactInView}
           />
         </div>
-        <div className="content" onScroll={handleScroll}>
+        <div className="content" ref={ref}>
           <MainContent
             aboutRef={aboutRef}
             portfolioRef={portfolioRef}

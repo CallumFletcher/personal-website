@@ -11,6 +11,60 @@ body {
 .root {
   overflow: hidden;
 }
+.sun-horizon {
+  background: rgba(13, 2, 33, 1);
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 20px;
+  background-size: 4em 2em, 4em 2em;
+  height: 40em;
+  perspective: 1000px;
+  margin-top: 20em;
+  transform: perspective(200px) rotateX(15deg) scale(4);
+}
+.sun {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  top: 0px;
+  position: absolute;
+  background-color: yellow;
+  background-image: linear-gradient(red, yellow), linear-gradient(black, white);
+  clip-path: polygon(
+    -50% 0px,
+    150% -50%,
+    150% 55%,
+    -50% 55%,
+    -50% 62%,
+    150% 62%,
+    150% 70%,
+    0 70%,
+    -50% 75%,
+    150% 75%,
+    150% 80%,
+    0 80%,
+    -50% 82%,
+    150% 82%,
+    150% 85%,
+    0 85%,
+    -50% 87%,
+    150% 87%,
+    150% 90%,
+    0 90%,
+    -50% 92%,
+    150% 92%,
+    150% 95%,
+    0 95%,
+    -50% 96%,
+    150% 96%,
+    150% 150%,
+    0 150%
+  );
+  transition: top 3s;
+}
+
 .vert-bg {
   position: fixed;
   top: 0;
@@ -26,7 +80,7 @@ body {
   background-size: 4em 2em, 4em 2em;
   height: 40em;
   perspective: 1000px;
-  margin-top: 20.1em;
+  margin-top: 20em;
   transform: perspective(200px) rotateX(15deg) scale(4);
 }
 .bg {
@@ -122,15 +176,13 @@ body {
   scroll-behavior: smooth;
   grid-area: content;
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
 .content::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .content {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .bottom {
@@ -148,8 +200,21 @@ body {
   .title {
     font-size: 65px;
   }
+  .bg {
+    margin-top: 16em;
+  }
+  .vert-bg {
+    margin-top: 16em;
+  }
+  .sun-horizon {
+    margin-top: 16em;
+  }
+  .sun {
+    height: 120px;
+    width: 120px;
+  }
   .body {
-    grid-template-rows: 15% 5% 70% auto;
+    grid-template-rows: 120px 5% 65% auto;
     grid-template-columns: 100%;
     grid-template-areas:
       "title"
