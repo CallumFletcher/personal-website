@@ -1,94 +1,122 @@
-import { Fade } from "@material-ui/core";
-import React from "react";
+import { Fade, Grid, IconButton, Popover, Tab, Tabs } from "@material-ui/core";
+import React, { useRef, useState } from "react";
 import "./MainContent.css";
+import { FilterIcon } from "./Icons";
+import FilterPopover from "./FilterPopover";
+import PortfolioPreviewItem from "./PortfolioPreviewItem";
+import PortfolioItem from "./PortfolioItem";
 
 function Portfolio({ portfolioRef, portfolioInView }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const ref = useRef();
+  //TODO: media query to lower number of items shown on small screen
+  const [selection, setSelection] = useState(null);
+  const [selectionPosition, setSelectionPosition] = useState(null);
+  const defaultSelection = {
+    type: {
+      "Work Experience": false,
+      "Personal Projects": false,
+      "Hackathon Projects": false,
+    },
+    language: {
+      JavaScript: false,
+      Python: false,
+      "HTML/CSS": false,
+      "C#": false,
+    },
+    framework: {
+      React: false,
+      Express: false,
+      "Node.js": false,
+      ".Net Core": false,
+      MongoDB: false,
+      Firebase: false,
+    },
+  };
+  const [filter, setFilter] = useState({
+    page: 0,
+    ...defaultSelection,
+  });
+  const handleChange = (event, newValue) => {
+    setFilter((prev) => ({ ...defaultSelection, page: newValue }));
+  };
+  console.log(ref?.current?.getBoundingClientRect());
   return (
     <Fade in={portfolioInView} timeout={1000}>
-      <div className="section">
-        <p className="text" id="portfolio" ref={portfolioRef}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          in porttitor justo. Quisque vitae massa risus. Pellentesque in dictum
-          ante. Nam egestas aliquet tortor vitae lobortis. Mauris dapibus rutrum
-          consequat. Nam viverra leo a tincidunt ornare. Integer vehicula sem
-          euismod nulla imperdiet, nec euismod nisi faucibus. Praesent sodales
-          id risus nec ornare. Nullam egestas quam id dapibus malesuada.
-          Suspendisse vitae porta elit. Donec dapibus convallis pulvinar.
-          Suspendisse congue nulla sed lectus mollis rhoncus. Mauris vulputate
-          eros eget dui rhoncus ullamcorper. Nam imperdiet dui non justo
-          aliquet, quis interdum nibh dignissim. Aenean orci ipsum, finibus ut
-          enim sed, congue hendrerit andit nisl vitae fermentum. Sed accumsan
-          nec tellus vel pharetra. Donec tincidunt dapibus metus, nec
-          consectetur est scelerisque et. Proin sit amet tellus tortor. t. Nam
-          viverra leo a tincidunt ornare. Integer vehicula sem euismod nulla
-          imperdiet, nec euismod nisi faucibus. Praesent sodales id risus nec
-          ornare. Nullam egestas quam id dapibus malesuada. Suspendisse vitae
-          porta elit. Donec dapibus convallis pulvinar. Suspendisse congue nulla
-          sed lectus mollis rhoncus. Mauris vulputate eros eget dui rhoncus
-          ullamcorper. Nam imperdiet dui non justo aliquet, quis interdum nibh
-          dignissim. Aenean orci ipsum, finibus ut enim sed, congue hendrerit
-          andit nisl vitae fermentum. Sed accumsan nec tellus vel pharetra.
-          Donec tincidunt dapibus metus, nec consectetur est scelerisque et.
-          Proin sit amet tellus tortor.t. Nam viverra leo a tincidunt ornare.
-          Integer vehicula sem euismod nulla imperdiet, nec euismod nisi
-          faucibus. Praesent sodales id risus nec ornare. Nullam egestas quam id
-          dapibus malesuada. Suspendisse vitae porta elit. Donec dapibus
-          convallis pulvinar. Suspendisse congue nulla sed lectus mollis
-          rhoncus. Mauris vulputate eros eget dui rhoncus ullamcorper. Nam
-          imperdiet dui non justo aliquet, quis interdum nibh dignissim. Aenean
-          orci ipsum, finibus ut enim sed, congue hendrerit andit nisl vitae
-          fermentum. Sed accumsan nec tellus vel pharetra. Donec tincidunt
-          dapibus metus, nec consectetur est scelerisque et. Proin sit amet
-          tellus tortor.t. Nam viverra leo a tincidunt ornare. Integer vehicula
-          sem euismod nulla imperdiet, nec euismod nisi faucibus. Praesent
-          sodales id risus nec ornare. Nullam egestas quam id dapibus malesuada.
-          Suspendisse vitae porta elit. Donec dapibus convallis pulvinar.
-          Suspendisse congue nulla sed lectus mollis rhoncus. Mauris vulputate
-          eros eget dui rhoncus ullamcorper. Nam imperdiet dui non justo
-          aliquet, quis interdum nibh dignissim. Aenean orci ipsum, finibus ut
-          enim sed, congue hendrerit andit nisl vitae fermentum. Sed accumsan
-          nec tellus vel pharetra. Donec tincidunt dapibus metus, nec
-          consectetur est scelerisque et. Proin sit amet tellus tortor.t. Nam
-          viverra leo a tincidunt ornare. Integer vehicula sem euismod nulla
-          imperdiet, nec euismod nisi faucibus. Praesent sodales id risus nec
-          ornare. Nullam egestas quam id dapibus malesuada. Suspendisse vitae
-          porta elit. Donec dapibus convallis pulvinar. Suspendisse congue nulla
-          sed lectus mollis rhoncus. Mauris vulputate eros eget dui rhoncus
-          ullamcorper. Nam imperdiet dui non justo aliquet, quis interdum nibh
-          dignissim. Aenean orci ipsum, finibus ut enim sed, congue hendrerit
-          andit nisl vitae fermentum. Sed accumsan nec tellus vel pharetra.
-          Donec tincidunt dapibus metus, nec consectetur est scelerisque et.
-          Proin sit amet tellus tortor.t. Nam viverra leo a tincidunt ornare.
-          Integer vehicula sem euismod nulla imperdiet, nec euismod nisi
-          faucibus. Praesent sodales id risus nec ornare. Nullam egestas quam id
-          dapibus malesuada. Suspendisse vitae porta elit. Donec dapibus
-          convallis pulvinar. Suspendisse congue nulla sed lectus mollis
-          rhoncus. Mauris vulputate eros eget dui rhoncus ullamcorper. Nam
-          imperdiet dui non justo aliquet, quis interdum nibh dignissim. Aenean
-          orci ipsum, finibus ut enim sed, congue hendrerit andit nisl vitae
-          fermentum. Sed accumsan nec tellus vel pharetra. Donec tincidunt
-          dapibus metus, nec consectetur est scelerisque et. Proin sit amet
-          tellus tortor.t. Nam viverra leo a tincidunt ornare. Integer vehicula
-          sem euismod nulla imperdiet, nec euismod nisi faucibus. Praesent
-          sodales id risus nec ornare. Nullam egestas quam id dapibus malesuada.
-          Suspendisse vitae porta elit. Donec dapibus convallis pulvinar.
-          Suspendisse congue nulla sed lectus mollis rhoncus. Mauris vulputate
-          eros eget dui rhoncus ullamcorper. Nam imperdiet dui non justo
-          aliquet, quis interdum nibh dignissim. Aenean orci ipsum, finibus ut
-          enim sed, congue hendrerit andit nisl vitae fermentum. Sed accumsan
-          nec tellus vel pharetra. Donec tincidunt dapibus metus, nec
-          consectetur est scelerisque et. Proin sit amet tellus tortor.t. Nam
-          viverra leo a tincidunt ornare. Integer vehicula sem euismod nulla
-          imperdiet, nec euismod nisi faucibus. Praesent sodales id risus nec
-          ornare. Nullam egestas quam id dapibus malesuada. Suspendisse vitae
-          porta elit. Donec dapibus convallis pulvinar. Suspendisse congue nulla
-          sed lectus mollis rhoncus. Mauris vulputate eros eget dui rhoncus
-          ullamcorper. Nam imperdiet dui non justo aliquet, quis interdum nibh
-          dignissim. Aenean orci ipsum, finibus ut enim sed, congue hendrerit
-          andit nisl vitae fermentum. Sed accumsan nec tellus vel pharetra.
-          Donec tincidunt dapibus metus, nec consectetur est scelerisque et.
-          Proin sit amet tellus tortor.
-        </p>
+      <div className="section" ref={portfolioRef} id="portfolio">
+        <div className="portfolio-nav">
+          <Tabs
+            variant="fullWidth"
+            value={filter.page}
+            onChange={handleChange}
+            className="portfolio-tabs"
+            style={{
+              marginBottom: 10,
+            }}
+            TabIndicatorProps={{ style: { background: "#ffb7f3" } }}
+          >
+            <Tab label="Featured" style={{ fontWeight: 400, fontSize: 18 }} />
+            <Tab label="Projects" style={{ fontWeight: 400, fontSize: 18 }} />
+            <Tab
+              label="Work Experience"
+              style={{ fontWeight: 400, fontSize: 18 }}
+            />
+          </Tabs>
+          <IconButton
+            onClick={(e) => setAnchorEl(e.currentTarget)}
+            style={{ fontWeight: 400, fontSize: 18, color: "#ffb7f3" }}
+          >
+            <FilterIcon />
+          </IconButton>
+          <Popover
+            open={Boolean(anchorEl)}
+            anchorEl={anchorEl}
+            onClose={() => setAnchorEl(null)}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "center",
+            }}
+          >
+            <FilterPopover filter={filter} setFilter={setFilter} />
+          </Popover>
+        </div>
+        {selectionPosition ? (
+          <PortfolioItem
+            initialPosition={{
+              position: "fixed",
+              width: selectionPosition.width,
+              height: selectionPosition.height,
+              top: selectionPosition.top,
+              bottom: selectionPosition.bottom,
+              left: selectionPosition.left,
+              right: selectionPosition.right,
+            }}
+            finalPosition={{
+              width: ref?.current?.getBoundingClientRect().width,
+              height: ref?.current?.getBoundingClientRect().height,
+              top: ref?.current?.getBoundingClientRect().top,
+              bottom: ref?.current?.getBoundingClientRect().bottom,
+              left: ref?.current?.getBoundingClientRect().left,
+              right: ref?.current?.getBoundingClientRect().right,
+            }}
+          />
+        ) : (
+          <Grid container spacing={1} style={{ height: "100%" }} ref={ref}>
+            {[...Array(6)].map((element, index) => (
+              <PortfolioPreviewItem
+                key={index}
+                name={index}
+                selection={selection}
+                setSelection={setSelection}
+                setSelectionPosition={setSelectionPosition}
+              />
+            ))}
+          </Grid>
+        )}
       </div>
     </Fade>
   );

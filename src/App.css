@@ -4,8 +4,8 @@ body {
   margin: 0;
   background: rgba(13, 2, 33, 1);
   height: 100vh;
-  font-family: "Saira", sans-serif;
   font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .root {
@@ -125,7 +125,7 @@ body {
   grid-template-areas:
     "title title title"
     "nav content ."
-    ". bottom .";
+    "bottom bottom bottom";
 }
 
 .title-container {
@@ -146,11 +146,6 @@ body {
   font-family: "Righteous", cursive;
   letter-spacing: 5px;
 
-  /* background: -webkit-linear-gradient(#fff 25%, #111 90%); */
-  /*   
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent; */
   color: #ffb7f3;
 }
 
@@ -174,7 +169,7 @@ body {
 }
 
 .content {
-  min-width: 500px;
+  min-width: 560px;
   overflow: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -232,10 +227,10 @@ body {
   }
   .content {
     min-width: 0px;
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   .section {
     height: 70vh;
-    color: blueviolet;
   }
 }

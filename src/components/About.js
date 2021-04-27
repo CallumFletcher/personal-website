@@ -5,8 +5,8 @@ import "./MainContent.css";
 function About({ aboutRef, aboutInView }) {
   return (
     <Fade in={aboutInView} timeout={1000}>
-      <div className="section">
-        <p className="text" id="about" ref={aboutRef}>
+      <div className="section" id="about" ref={aboutRef}>
+        <p className="text">
           Hi I'm Callum. I am a web developer and Engineering student at the
           University of Waterloo.
         </p>
