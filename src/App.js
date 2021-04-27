@@ -21,7 +21,7 @@ function App() {
   });
   useEffect(() => {
     if (aboutInView) setSunHeight(200);
-    else if (portfolioInView) setSunHeight(titleBreakpoint ? 80 : 50);
+    else if (portfolioInView) setSunHeight(80);
     else if (contactInView) setSunHeight(0);
   }, [contactInView, portfolioInView, aboutInView, titleBreakpoint]);
   return (

@@ -5,8 +5,8 @@ import "./MainContent.css";
 function Contact({ contactRef, contactInView }) {
   return (
     <Fade in={contactInView} timeout={1000}>
-      <div className="section">
-        <p className="text" id="contact" ref={contactRef}>
+      <div className="section" id="contact" ref={contactRef}>
+        <p className="text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
           in porttitor justo. Quisque vitae massa risus. Pellentesque in dictum
           ante. Nam egestas aliquet tortor vitae lobortis. Mauris dapibus rutrum

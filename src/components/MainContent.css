@@ -4,7 +4,7 @@
   scroll-snap-align: center;
   scroll-snap-stop: always;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .text {
@@ -18,4 +18,22 @@
   .section {
     height: 65vh;
   }
+}
+
+.portfolio-item {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 209, 119, 0.21) 0%,
+      rgba(255, 227, 172, 0.12817) 0.01%,
+      rgba(255, 228, 174, 0.124687) 51.04%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgba(255, 119, 232, 0.12);
+  border-radius: 15px;
+}
+
+.MuiTabs-indicator {
+  color: "darkorange";
 }
