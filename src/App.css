@@ -125,7 +125,7 @@ body {
   grid-template-areas:
     "title title title"
     "nav content ."
-    ". bottom .";
+    "bottom bottom bottom";
 }
 
 .title-container {
@@ -169,7 +169,7 @@ body {
 }
 
 .content {
-  min-width: 500px;
+  min-width: 560px;
   overflow: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -227,7 +227,8 @@ body {
   }
   .content {
     min-width: 0px;
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   .section {
     height: 70vh;
