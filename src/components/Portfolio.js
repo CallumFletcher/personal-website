@@ -10,7 +10,6 @@ function Portfolio({ portfolioRef, portfolioInView }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const ref = useRef();
   //TODO: media query to lower number of items shown on small screen
-  const [selection, setSelection] = useState(null);
   const [selectionPosition, setSelectionPosition] = useState(null);
   const defaultSelection = {
     type: {
@@ -43,9 +42,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
   };
   function cancelSelection() {
     setSelectionPosition(null);
-    setSelection(null);
   }
-  console.log(ref?.current?.getBoundingClientRect());
   return (
     <Fade in={portfolioInView} timeout={1000}>
       <div className="section" ref={portfolioRef} id="portfolio">
@@ -115,15 +112,14 @@ function Portfolio({ portfolioRef, portfolioInView }) {
             <Grid
               container
               spacing={0}
-              style={{ height: "100%", transition: "opacity 1s" }}
               ref={ref}
+              alignContent="flex-start"
+              className="portfolio-grid"
             >
               {[...Array(6)].map((element, index) => (
                 <PortfolioPreviewItem
                   key={index}
                   name={index}
-                  selection={selection}
-                  setSelection={setSelection}
                   setSelectionPosition={setSelectionPosition}
                 />
               ))}
