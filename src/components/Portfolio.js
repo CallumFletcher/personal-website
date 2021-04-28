@@ -10,7 +10,6 @@ function Portfolio({ portfolioRef, portfolioInView }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const ref = useRef();
   //TODO: media query to lower number of items shown on small screen
-  const [selection, setSelection] = useState(null);
   const [selectionPosition, setSelectionPosition] = useState(null);
   const defaultSelection = {
     type: {
@@ -37,10 +36,13 @@ function Portfolio({ portfolioRef, portfolioInView }) {
     page: 0,
     ...defaultSelection,
   });
+
   const handleChange = (event, newValue) => {
     setFilter((prev) => ({ ...defaultSelection, page: newValue }));
   };
-  console.log(ref?.current?.getBoundingClientRect());
+  function cancelSelection() {
+    setSelectionPosition(null);
+  }
   return (
     <Fade in={portfolioInView} timeout={1000}>
       <div className="section" ref={portfolioRef} id="portfolio">
@@ -86,6 +88,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
         </div>
         {selectionPosition ? (
           <PortfolioItem
+            cancelSelection={cancelSelection}
             initialPosition={{
               position: "fixed",
               width: selectionPosition.width,
@@ -105,17 +108,23 @@ function Portfolio({ portfolioRef, portfolioInView }) {
             }}
           />
         ) : (
-          <Grid container spacing={1} style={{ height: "100%" }} ref={ref}>
-            {[...Array(6)].map((element, index) => (
-              <PortfolioPreviewItem
-                key={index}
-                name={index}
-                selection={selection}
-                setSelection={setSelection}
-                setSelectionPosition={setSelectionPosition}
-              />
-            ))}
-          </Grid>
+          <Fade in={true}>
+            <Grid
+              container
+              spacing={0}
+              ref={ref}
+              alignContent="flex-start"
+              className="portfolio-grid"
+            >
+              {[...Array(6)].map((element, index) => (
+                <PortfolioPreviewItem
+                  key={index}
+                  name={index}
+                  setSelectionPosition={setSelectionPosition}
+                />
+              ))}
+            </Grid>
+          </Fade>
         )}
       </div>
     </Fade>
