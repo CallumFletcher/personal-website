@@ -11,15 +11,11 @@ function PortfolioPreviewItem({
   console.log(selection);
   function handleClick() {
     setSelection(name);
+    setSelectionPosition(ref.current.getBoundingClientRect());
   }
-  useEffect(() => {
-    if (selection === name) {
-      console.log(ref.current.getBoundingClientRect());
-      setSelectionPosition(ref.current.getBoundingClientRect());
-    }
-  }, [selection, name, setSelection, setSelectionPosition]);
+
   return (
-    <Grid item xs={12} sm={6} lg={4}>
+    <Grid item xs={12} sm={6} lg={4} style={{ padding: 2 }}>
       <div
         className="portfolio-item"
         onClick={handleClick}

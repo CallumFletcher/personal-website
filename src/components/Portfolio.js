@@ -37,9 +37,14 @@ function Portfolio({ portfolioRef, portfolioInView }) {
     page: 0,
     ...defaultSelection,
   });
+
   const handleChange = (event, newValue) => {
     setFilter((prev) => ({ ...defaultSelection, page: newValue }));
   };
+  function cancelSelection() {
+    setSelectionPosition(null);
+    setSelection(null);
+  }
   console.log(ref?.current?.getBoundingClientRect());
   return (
     <Fade in={portfolioInView} timeout={1000}>
@@ -86,6 +91,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
         </div>
         {selectionPosition ? (
           <PortfolioItem
+            cancelSelection={cancelSelection}
             initialPosition={{
               position: "fixed",
               width: selectionPosition.width,
@@ -105,17 +111,24 @@ function Portfolio({ portfolioRef, portfolioInView }) {
             }}
           />
         ) : (
-          <Grid container spacing={1} style={{ height: "100%" }} ref={ref}>
-            {[...Array(6)].map((element, index) => (
-              <PortfolioPreviewItem
-                key={index}
-                name={index}
-                selection={selection}
-                setSelection={setSelection}
-                setSelectionPosition={setSelectionPosition}
-              />
-            ))}
-          </Grid>
+          <Fade in={true}>
+            <Grid
+              container
+              spacing={0}
+              style={{ height: "100%", transition: "opacity 1s" }}
+              ref={ref}
+            >
+              {[...Array(6)].map((element, index) => (
+                <PortfolioPreviewItem
+                  key={index}
+                  name={index}
+                  selection={selection}
+                  setSelection={setSelection}
+                  setSelectionPosition={setSelectionPosition}
+                />
+              ))}
+            </Grid>
+          </Fade>
         )}
       </div>
     </Fade>
