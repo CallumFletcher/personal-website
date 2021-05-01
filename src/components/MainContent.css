@@ -82,7 +82,7 @@
   padding-right: 25px;
 
   align-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
 
 @media only screen and (max-width: 750px) {

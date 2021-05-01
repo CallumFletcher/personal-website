@@ -46,6 +46,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
             style={{
               fontSize: 14,
               padding: 10,
+              paddingLeft: 25,
             }}
           >
             {schema.time}
@@ -69,10 +70,15 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
               overflow: "hidden",
             }}
           >
-            <h1 className="portfolio-title" style={{ flexGrow: 1 }}>
+            <h1
+              className="portfolio-title"
+              style={{ flexGrow: 1, textAlign: "left" }}
+            >
               {schema.title}
             </h1>
-            <h3 className="portfolio-subtitle">{schema.subtitle}</h3>
+            <h3 className="portfolio-subtitle" style={{ textAlign: "left" }}>
+              {schema.subtitle}
+            </h3>
           </div>
 
           <img
@@ -90,6 +96,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
           style={{
             flexGrow: 1,
             padding: 25,
+            paddingRight: 10,
             display: "flex",
             flexDirection: "column",
             height: "100%",
@@ -116,9 +123,9 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
                 label={element}
                 style={{
                   color: "white",
-                  borderColor: "#ffb7f3",
+                  borderColor: "#fff",
                   height: 28,
-                  marginRight: 5,
+                  marginRight: 2,
                 }}
               />
             ))}
@@ -128,7 +135,12 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
 
             <span
               className="portfolio-description"
-              style={{ fontSize: 16, paddingTop: 5, paddingBottom: 5 }}
+              style={{
+                fontSize: 16,
+                paddingTop: 5,
+                paddingBottom: 5,
+                paddingRight: 2,
+              }}
             >
               Frameworks/tools:
             </span>
@@ -141,7 +153,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
                   color: "#fff",
                   borderColor: "#fff",
                   height: 28,
-                  marginRight: 5,
+                  marginRight: 2,
                 }}
               />
             ))}
