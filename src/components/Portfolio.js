@@ -5,11 +5,12 @@ import { FilterIcon } from "./Icons";
 import FilterPopover from "./FilterPopover";
 import PortfolioPreviewItem from "./PortfolioPreviewItem";
 import PortfolioItem from "./PortfolioItem";
+import PortfolioData from "../PortfolioData.json";
 
 function Portfolio({ portfolioRef, portfolioInView }) {
+  const [selectedData, setSelectedData] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const ref = useRef();
-  //TODO: media query to lower number of items shown on small screen
   const [selectionPosition, setSelectionPosition] = useState(null);
   const defaultSelection = {
     type: {
@@ -30,6 +31,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
       ".Net Core": false,
       MongoDB: false,
       Firebase: false,
+      Azure: false,
     },
   };
   const [filter, setFilter] = useState({
@@ -38,6 +40,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
   });
 
   const handleChange = (event, newValue) => {
+    console.log(newValue);
     setFilter((prev) => ({ ...defaultSelection, page: newValue }));
   };
   function cancelSelection() {
@@ -59,10 +62,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
           >
             <Tab label="Featured" style={{ fontWeight: 400, fontSize: 18 }} />
             <Tab label="Projects" style={{ fontWeight: 400, fontSize: 18 }} />
-            <Tab
-              label="Work Experience"
-              style={{ fontWeight: 400, fontSize: 18 }}
-            />
+            <Tab label="Work" style={{ fontWeight: 400, fontSize: 18 }} />
           </Tabs>
           <IconButton
             onClick={(e) => setAnchorEl(e.currentTarget)}
@@ -89,6 +89,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
         {selectionPosition ? (
           <PortfolioItem
             cancelSelection={cancelSelection}
+            data={selectedData}
             initialPosition={{
               position: "fixed",
               width: selectionPosition.width,
@@ -116,10 +117,21 @@ function Portfolio({ portfolioRef, portfolioInView }) {
               alignContent="flex-start"
               className="portfolio-grid"
             >
-              {[...Array(6)].map((element, index) => (
+              {PortfolioData.filter((element) => {
+                if (filter.page === 0) return true;
+                else if (filter.page === 1) {
+                  return element.type === "Personal Projects";
+                } else if (filter.page === 2) {
+                  return element.type === "Work Experience";
+                } else {
+                  //TODO: implement rest of the sorting
+                  return true;
+                }
+              }).map((element, index) => (
                 <PortfolioPreviewItem
+                  data={element}
                   key={index}
-                  name={index}
+                  setSelectedData={setSelectedData}
                   setSelectionPosition={setSelectionPosition}
                 />
               ))}

@@ -53,6 +53,7 @@
   margin: 0;
   color: #fff;
   text-align: center;
+  margin-right: 5px;
 }
 .portfolio-description {
   margin: 0;
@@ -69,7 +70,6 @@
 }
 .portfolio-preview-wrapper {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
   align-content: space-around;

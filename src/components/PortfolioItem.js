@@ -1,7 +1,12 @@
 import { Chip, IconButton } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@material-ui/icons/Close";
-function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
+function PortfolioItem({
+  initialPosition,
+  finalPosition,
+  cancelSelection,
+  data,
+}) {
   const [position, setPosition] = useState(initialPosition);
   const schema = {
     title: "Example Tikj",
@@ -49,7 +54,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
               paddingLeft: 25,
             }}
           >
-            {schema.time}
+            {data.time}
           </h3>
           <IconButton
             onClick={handleExit}
@@ -74,10 +79,10 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
               className="portfolio-title"
               style={{ flexGrow: 1, textAlign: "left" }}
             >
-              {schema.title}
+              {data.title}
             </h1>
             <h3 className="portfolio-subtitle" style={{ textAlign: "left" }}>
-              {schema.subtitle}
+              {data.subtitle}
             </h3>
           </div>
 
@@ -116,7 +121,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
             >
               Languages:
             </span>
-            {schema.language.map((element, index) => (
+            {data.language.map((element, index) => (
               <Chip
                 key={index}
                 variant="outlined"
@@ -144,7 +149,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
             >
               Frameworks/tools:
             </span>
-            {schema.framework.map((element, index) => (
+            {data.framework.map((element, index) => (
               <Chip
                 key={index}
                 variant="outlined"

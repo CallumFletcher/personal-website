@@ -1,0 +1,52 @@
+[
+{
+  "title": "Web Developer, Healthtii Inc.",
+  "subtitle": "Full-stack web developer for a healthcare startup",
+  "time": "January 2021 - Present",
+  "description": "example description will go here lorem ipsum dolor est",
+  "type": "Work Experience",
+  "language": ["JavaScript", "C#", "HTML/CSS"],
+  "framework": ["React", "Node.js", ".Net Core"]
+
+},
+{
+  "title": "Portfolio Website",
+  "subtitle": "Personal website designed to showcase my skills and experience",
+  "time": "",
+  "description": "example description will go here lorem ipsum dolor est",
+  "type": "Personal Projects",
+  "language": ["JavaScript", "HTML/CSS"],
+  "framework": ["React", "Node.js","Firebase"]
+
+},
+{
+  "title": "Amplify",
+  "subtitle": "Grand prize winning project for HackHERS 2021 Hackathon",
+  "time": "January 2021??",
+  "description": "example description will go here lorem ipsum dolor est",
+  "type": "Hackathon Projects",
+  "language": ["JavaScript", "HTML/CSS"],
+  "framework": ["React", "Node.js", "Firebase"]
+
+},
+{
+  "title": "StudyVille",
+  "subtitle": "Grand prize winning project for PackHacks 2021 Hackathon",
+  "time": "March 2021??",
+  "description": "example description will go here lorem ipsum dolor est",
+  "type": "Hackathon Projects",
+  "language": ["JavaScript", "HTML/CSS"],
+  "framework": ["React", "Node.js", "Express","MongoDB"]
+
+},
+{
+  "title": "Virtual-Me",
+  "subtitle": "Hackathon project for HackDartmouth 2021",
+  "time": "April 2021",
+  "description": "example description will go here lorem ipsum dolor est",
+  "type": "Hackathon Projects",
+  "language": ["JavaScript", "HTML/CSS"],
+  "framework": ["React", "Node.js", "Firebase", "Azure"]
+
+}
+]
