@@ -38,10 +38,18 @@ function Portfolio({ portfolioRef, portfolioInView }) {
     page: 0,
     ...defaultSelection,
   });
-
+  console.log(filter);
   const handleChange = (event, newValue) => {
     console.log(newValue);
-    setFilter((prev) => ({ ...defaultSelection, page: newValue }));
+    setFilter((prev) => ({
+      ...defaultSelection,
+      type: {
+        "Work Experience": newValue === 0 ? true : Boolean(newValue === 2),
+        "Personal Projects": newValue === 0 ? true : Boolean(newValue === 1),
+        "Hackathon Projects": Boolean(newValue === 0),
+      },
+      page: newValue,
+    }));
   };
   function cancelSelection() {
     setSelectionPosition(null);
@@ -125,16 +133,32 @@ function Portfolio({ portfolioRef, portfolioInView }) {
                   return element.type === "Work Experience";
                 } else {
                   //TODO: implement rest of the sorting
-                  return true;
+                  element.score = 0;
+                  if (filter.type[element.type]) {
+                    element.score++;
+                  }
+                  element.language.forEach((i) => {
+                    if (filter.language[i]) {
+                      element.score++;
+                    }
+                  });
+                  element.framework.forEach((i) => {
+                    if (filter.framework[i]) {
+                      element.score++;
+                    }
+                  });
+                  return element.score;
                 }
-              }).map((element, index) => (
-                <PortfolioPreviewItem
-                  data={element}
-                  key={index}
-                  setSelectedData={setSelectedData}
-                  setSelectionPosition={setSelectionPosition}
-                />
-              ))}
+              })
+                .sort((a, b) => b.score - a.score)
+                .map((element, index) => (
+                  <PortfolioPreviewItem
+                    data={element}
+                    key={index}
+                    setSelectedData={setSelectedData}
+                    setSelectionPosition={setSelectionPosition}
+                  />
+                ))}
             </Grid>
           </Fade>
         )}
