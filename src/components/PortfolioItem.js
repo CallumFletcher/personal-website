@@ -8,15 +8,7 @@ function PortfolioItem({
   data,
 }) {
   const [position, setPosition] = useState(initialPosition);
-  const schema = {
-    title: "Example Tikj",
-    subtitle: "subtitle lksjdfl ",
-    time: "January 2020",
-    description: "example description will go here lorem ipsum dolor est",
-    type: "Personal Project",
-    language: ["JavaScript", "HTML/CSS"],
-    framework: ["React", "Node.js"],
-  };
+
   useEffect(() => {
     setPosition((prev) => ({
       ...prev,
@@ -92,8 +84,8 @@ function PortfolioItem({
             style={{
               width: "20%",
               height: "auto",
-              maxHeight: 150,
-              maxWidth: 150,
+              maxHeight: 90,
+              maxWidth: 90,
             }}
           />
         </div>
@@ -101,6 +93,7 @@ function PortfolioItem({
           style={{
             flexGrow: 1,
             padding: 25,
+            paddingTop: 10,
             paddingRight: 10,
             display: "flex",
             flexDirection: "column",
@@ -108,7 +101,13 @@ function PortfolioItem({
             justifyContent: "space-between",
           }}
         >
-          <p className="portfolio-description">{schema.description}</p>
+          <ul>
+            {data.description.map((element, index) => (
+              <li key={index} className="portfolio-description">
+                {element}
+              </li>
+            ))}
+          </ul>
           <div>
             <span
               className="portfolio-description"

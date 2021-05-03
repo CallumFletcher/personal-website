@@ -38,7 +38,6 @@ function Portfolio({ portfolioRef, portfolioInView }) {
     page: 0,
     ...defaultSelection,
   });
-  console.log(filter);
   const handleChange = (event, newValue) => {
     console.log(newValue);
     setFilter((prev) => ({
@@ -117,7 +116,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
             }}
           />
         ) : (
-          <Fade in={true}>
+          <Fade in>
             <Grid
               container
               spacing={0}
@@ -152,12 +151,14 @@ function Portfolio({ portfolioRef, portfolioInView }) {
               })
                 .sort((a, b) => b.score - a.score)
                 .map((element, index) => (
-                  <PortfolioPreviewItem
-                    data={element}
-                    key={index}
-                    setSelectedData={setSelectedData}
-                    setSelectionPosition={setSelectionPosition}
-                  />
+                  <Fade in={true} timeout={5000}>
+                    <PortfolioPreviewItem
+                      data={element}
+                      key={index}
+                      setSelectedData={setSelectedData}
+                      setSelectionPosition={setSelectionPosition}
+                    />
+                  </Fade>
                 ))}
             </Grid>
           </Fade>
