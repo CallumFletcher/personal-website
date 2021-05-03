@@ -1,21 +1,15 @@
-import { Grid } from "@material-ui/core";
+import { Chip, Grid } from "@material-ui/core";
 import React, { useRef } from "react";
 import "./MainContent.css";
 
-function PortfolioPreviewItem({ setSelectionPosition, name }) {
+function PortfolioPreviewItem({ setSelectionPosition, data, setSelectedData }) {
+  //TODO: add tags to preview??
   const ref = useRef();
   function handleClick() {
+    setSelectedData(data);
     setSelectionPosition(ref.current.getBoundingClientRect());
   }
-  const schema = {
-    title: "Example Tikj",
-    subtitle: "subtitle lksjdfl ",
-    time: "January 2020",
-    description: "example description will go here lorem ipsum dolor est",
-    type: "Personal Project",
-    language: ["JavaScript"],
-    framework: ["React", "Node.js"],
-  };
+
   return (
     <Grid item xs={12} sm={6} lg={4} style={{ padding: 2 }}>
       <div
@@ -33,8 +27,13 @@ function PortfolioPreviewItem({ setSelectionPosition, name }) {
               overflow: "hidden",
             }}
           >
-            <h2 className="portfolio-title">{schema.title}</h2>
-            <h3 className="portfolio-subtitle">{schema.subtitle}</h3>
+            <h2
+              className="portfolio-title"
+              style={{ fontSize: 20, fontWeight: 400 }}
+            >
+              {data.title}
+            </h2>
+            {/* <h3 className="portfolio-subtitle">{data.subtitle}</h3> */}
           </div>
 
           <img
@@ -43,11 +42,41 @@ function PortfolioPreviewItem({ setSelectionPosition, name }) {
             style={{
               width: "50%",
               height: "auto",
-              maxWidth: 100,
-              maxHeight: 100,
+              maxWidth: 90,
+              maxHeight: 90,
             }}
           />
         </div>
+        {data.language
+          .filter((element, index) => index < 2)
+          .map((element, index) => (
+            <Chip
+              key={index}
+              variant="outlined"
+              label={element}
+              style={{
+                color: "white",
+                borderColor: "#fff",
+                height: 28,
+                margin: 2,
+              }}
+            />
+          ))}
+        {data.framework
+          .filter((element, index) => index < 2)
+          .map((element, index) => (
+            <Chip
+              key={index}
+              variant="outlined"
+              label={element}
+              style={{
+                color: "white",
+                borderColor: "#fff",
+                height: 28,
+                margin: 2,
+              }}
+            />
+          ))}
       </div>
     </Grid>
   );

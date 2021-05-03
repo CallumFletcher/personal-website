@@ -5,11 +5,12 @@ import { FilterIcon } from "./Icons";
 import FilterPopover from "./FilterPopover";
 import PortfolioPreviewItem from "./PortfolioPreviewItem";
 import PortfolioItem from "./PortfolioItem";
+import PortfolioData from "../PortfolioData.json";
 
 function Portfolio({ portfolioRef, portfolioInView }) {
+  const [selectedData, setSelectedData] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const ref = useRef();
-  //TODO: media query to lower number of items shown on small screen
   const [selectionPosition, setSelectionPosition] = useState(null);
   const defaultSelection = {
     type: {
@@ -30,15 +31,24 @@ function Portfolio({ portfolioRef, portfolioInView }) {
       ".Net Core": false,
       MongoDB: false,
       Firebase: false,
+      Azure: false,
     },
   };
   const [filter, setFilter] = useState({
     page: 0,
     ...defaultSelection,
   });
-
   const handleChange = (event, newValue) => {
-    setFilter((prev) => ({ ...defaultSelection, page: newValue }));
+    console.log(newValue);
+    setFilter((prev) => ({
+      ...defaultSelection,
+      type: {
+        "Work Experience": newValue === 0 ? true : Boolean(newValue === 2),
+        "Personal Projects": newValue === 0 ? true : Boolean(newValue === 1),
+        "Hackathon Projects": Boolean(newValue === 0),
+      },
+      page: newValue,
+    }));
   };
   function cancelSelection() {
     setSelectionPosition(null);
@@ -59,10 +69,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
           >
             <Tab label="Featured" style={{ fontWeight: 400, fontSize: 18 }} />
             <Tab label="Projects" style={{ fontWeight: 400, fontSize: 18 }} />
-            <Tab
-              label="Work Experience"
-              style={{ fontWeight: 400, fontSize: 18 }}
-            />
+            <Tab label="Work" style={{ fontWeight: 400, fontSize: 18 }} />
           </Tabs>
           <IconButton
             onClick={(e) => setAnchorEl(e.currentTarget)}
@@ -89,6 +96,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
         {selectionPosition ? (
           <PortfolioItem
             cancelSelection={cancelSelection}
+            data={selectedData}
             initialPosition={{
               position: "fixed",
               width: selectionPosition.width,
@@ -108,7 +116,7 @@ function Portfolio({ portfolioRef, portfolioInView }) {
             }}
           />
         ) : (
-          <Fade in={true}>
+          <Fade in>
             <Grid
               container
               spacing={0}
@@ -116,13 +124,42 @@ function Portfolio({ portfolioRef, portfolioInView }) {
               alignContent="flex-start"
               className="portfolio-grid"
             >
-              {[...Array(6)].map((element, index) => (
-                <PortfolioPreviewItem
-                  key={index}
-                  name={index}
-                  setSelectionPosition={setSelectionPosition}
-                />
-              ))}
+              {PortfolioData.filter((element) => {
+                if (filter.page === 0) return true;
+                else if (filter.page === 1) {
+                  return element.type === "Personal Projects";
+                } else if (filter.page === 2) {
+                  return element.type === "Work Experience";
+                } else {
+                  //TODO: implement rest of the sorting
+                  element.score = 0;
+                  if (filter.type[element.type]) {
+                    element.score++;
+                  }
+                  element.language.forEach((i) => {
+                    if (filter.language[i]) {
+                      element.score++;
+                    }
+                  });
+                  element.framework.forEach((i) => {
+                    if (filter.framework[i]) {
+                      element.score++;
+                    }
+                  });
+                  return element.score;
+                }
+              })
+                .sort((a, b) => b.score - a.score)
+                .map((element, index) => (
+                  <Fade in={true} timeout={5000}>
+                    <PortfolioPreviewItem
+                      data={element}
+                      key={index}
+                      setSelectedData={setSelectedData}
+                      setSelectionPosition={setSelectionPosition}
+                    />
+                  </Fade>
+                ))}
             </Grid>
           </Fade>
         )}

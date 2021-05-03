@@ -1,17 +1,14 @@
 import { Chip, IconButton } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@material-ui/icons/Close";
-function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
+function PortfolioItem({
+  initialPosition,
+  finalPosition,
+  cancelSelection,
+  data,
+}) {
   const [position, setPosition] = useState(initialPosition);
-  const schema = {
-    title: "Example Tikj",
-    subtitle: "subtitle lksjdfl ",
-    time: "January 2020",
-    description: "example description will go here lorem ipsum dolor est",
-    type: "Personal Project",
-    language: ["JavaScript", "HTML/CSS"],
-    framework: ["React", "Node.js"],
-  };
+
   useEffect(() => {
     setPosition((prev) => ({
       ...prev,
@@ -49,7 +46,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
               paddingLeft: 25,
             }}
           >
-            {schema.time}
+            {data.time}
           </h3>
           <IconButton
             onClick={handleExit}
@@ -74,10 +71,10 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
               className="portfolio-title"
               style={{ flexGrow: 1, textAlign: "left" }}
             >
-              {schema.title}
+              {data.title}
             </h1>
             <h3 className="portfolio-subtitle" style={{ textAlign: "left" }}>
-              {schema.subtitle}
+              {data.subtitle}
             </h3>
           </div>
 
@@ -87,8 +84,8 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
             style={{
               width: "20%",
               height: "auto",
-              maxHeight: 150,
-              maxWidth: 150,
+              maxHeight: 90,
+              maxWidth: 90,
             }}
           />
         </div>
@@ -96,6 +93,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
           style={{
             flexGrow: 1,
             padding: 25,
+            paddingTop: 10,
             paddingRight: 10,
             display: "flex",
             flexDirection: "column",
@@ -103,7 +101,13 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
             justifyContent: "space-between",
           }}
         >
-          <p className="portfolio-description">{schema.description}</p>
+          <ul>
+            {data.description.map((element, index) => (
+              <li key={index} className="portfolio-description">
+                {element}
+              </li>
+            ))}
+          </ul>
           <div>
             <span
               className="portfolio-description"
@@ -116,7 +120,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
             >
               Languages:
             </span>
-            {schema.language.map((element, index) => (
+            {data.language.map((element, index) => (
               <Chip
                 key={index}
                 variant="outlined"
@@ -144,7 +148,7 @@ function PortfolioItem({ initialPosition, finalPosition, cancelSelection }) {
             >
               Frameworks/tools:
             </span>
-            {schema.framework.map((element, index) => (
+            {data.framework.map((element, index) => (
               <Chip
                 key={index}
                 variant="outlined"
