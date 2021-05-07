@@ -1,9 +1,9 @@
 import React from "react";
 import "./BottomBar.css";
-import { GithubIcon, LinkedinIcon } from "./Icons";
 import { IconButton, Button, useMediaQuery } from "@material-ui/core";
 import DescriptionIcon from "@material-ui/icons/Description";
 import EmailIcon from "@material-ui/icons/Email";
+import { GitHub, LinkedIn } from "@material-ui/icons";
 
 function BottomBar() {
   const breakpoint = useMediaQuery("(min-width:750px)");
@@ -14,7 +14,10 @@ function BottomBar() {
           window.open("https://github.com/CallumFletcher", "_blank")
         }
       >
-        <GithubIcon className="icon" />
+        <GitHub
+          className="material-icon"
+          style={breakpoint ? { fontSize: 36 } : { fontSize: 24 }}
+        />
       </IconButton>
       <IconButton
         onClick={() =>
@@ -24,7 +27,10 @@ function BottomBar() {
           )
         }
       >
-        <LinkedinIcon className="icon" />
+        <LinkedIn
+          className="material-icon"
+          style={breakpoint ? { fontSize: 36 } : { fontSize: 24 }}
+        />
       </IconButton>
       <Button
         onClick={() =>
@@ -42,7 +48,7 @@ function BottomBar() {
       </Button>
       <Button
         onClick={() =>
-          (window.location.href = "mailto:callumafletcher@gmail.com")
+          (window.location.href = "mailto:callum.fletcher@uwaterloo.ca")
         }
       >
         <p className="button-text">Email</p>
