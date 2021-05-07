@@ -14,6 +14,7 @@
 
 .material-icon {
   padding-left: 10px;
+  padding-right: 10px;
   color: #ffb7f3;
 }
 
@@ -21,6 +22,7 @@
   color: #ffb7f3;
   font-weight: 500;
   font-size: 18px;
+  margin: 0px;
 }
 
 @media only screen and (max-width: 750px) {

@@ -74,7 +74,20 @@ function PortfolioItem({
               {data.title}
             </h1>
             <h3 className="portfolio-subtitle" style={{ textAlign: "left" }}>
-              {data.subtitle}
+              {data.links.map((element, index) => (
+                <a
+                  href={element.href}
+                  key={index}
+                  style={{
+                    color: "#fff",
+                    fontSize: 16,
+                    textTransform: "capitalize",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {element.title}
+                </a>
+              ))}
             </h3>
           </div>
 

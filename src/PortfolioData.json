@@ -1,7 +1,7 @@
 [
   {
     "title": "Web Developer, Healthtii Inc.",
-    "subtitle": "Full-stack web developer for a healthcare startup",
+    "links": [{ "title": "Company Website", "href": "https://healthtii.com" }],
     "time": "January 2021 - Present",
     "description": [
       "Created collaboration feature for doctors to share ideas, increasing user engagement and retention",
@@ -14,7 +14,12 @@
   },
   {
     "title": "Portfolio Website",
-    "subtitle": "Personal website designed to showcase my skills and experience",
+    "links": [
+      {
+        "title": "Github",
+        "href": "https://github.com/CallumFletcher/personal-website"
+      }
+    ],
     "time": "",
     "description": [
       "Designed and created a portfolio website with React Hooks and Firebase to highlight my skills and experience",
@@ -27,7 +32,12 @@
   },
   {
     "title": "Amplify",
-    "subtitle": "Grand prize winning project for HackHERS 2021 Hackathon",
+    "links": [
+      {
+        "title": "Github",
+        "href": "https://github.com/CallumFletcher/HackHERS_2021"
+      }
+    ],
     "time": "February 2021",
     "description": [
       "Built a web application designed to highlight the injustice that women face in the workplaces and in the community, winning the grand prize at the HackHERS 2021 Hackathon",
@@ -40,8 +50,13 @@
   },
   {
     "title": "StudyVille",
-    "subtitle": "Grand prize winning project for PackHacks 2021 Hackathon",
-    "time": "March 2021??",
+    "links": [
+      {
+        "title": "Github",
+        "href": "https://github.com/CallumFletcher/packhacks-2021"
+      }
+    ],
+    "time": "March 2021",
     "description": [
       "Built a web application with Node.js that works as a virtual school for students to study and learn in, improving productivity in online schools",
       "Won the grand prize of PackHacks 2021",
@@ -53,7 +68,12 @@
   },
   {
     "title": "Virtual-Me",
-    "subtitle": "Hackathon project for HackDartmouth 2021",
+    "links": [
+      {
+        "title": "Github",
+        "href": "https://github.com/CallumFletcher/Virtual-me"
+      }
+    ],
     "time": "April 2021",
     "description": [
       "Created a web application with React and Firebase that matches a virtual avatar to a users face using facial recognition and lets them download and use the avatar in a unity application",
