@@ -31,7 +31,8 @@
     "time": "February 2021",
     "description": [
       "Built a web application designed to highlight the injustice that women face in the workplaces and in the community, winning the grand prize at the HackHERS 2021 Hackathon",
-      ""
+      "Built a map where users can anonymously share their stories in realtime using Firebase realtime database, creating a heatmap of incidences of harassment",
+      "Created a system for users to users to rate employers based on their commitment to diversity and gender equality and view companies' past track records"
     ],
     "type": "Hackathon Projects",
     "language": ["JavaScript", "HTML/CSS"],
@@ -41,7 +42,11 @@
     "title": "StudyVille",
     "subtitle": "Grand prize winning project for PackHacks 2021 Hackathon",
     "time": "March 2021??",
-    "description": "example description will go here lorem ipsum dolor est",
+    "description": [
+      "Built a web application with Node.js that works as a virtual school for students to study and learn in, improving productivity in online schools",
+      "Won the grand prize of PackHacks 2021",
+      "Created a full-stack project with user authentication, video chat, and live websockets text chat using the MERN stack (MongoDB, Express, React, Node.js), and deployed to heroku"
+    ],
     "type": "Hackathon Projects",
     "language": ["JavaScript", "HTML/CSS"],
     "framework": ["React", "Node.js", "Express", "MongoDB"]
@@ -50,7 +55,11 @@
     "title": "Virtual-Me",
     "subtitle": "Hackathon project for HackDartmouth 2021",
     "time": "April 2021",
-    "description": "example description will go here lorem ipsum dolor est",
+    "description": [
+      "Created a web application with React and Firebase that matches a virtual avatar to a users face using facial recognition and lets them download and use the avatar in a unity application",
+      "Used Azure Cognitive Services facial recognition machine learning to match avatars in a Firebase database with a user uploaded image in order to find the ideal avatar for a user",
+      "Generated avatar could be used by users in a desktop unity application that acts as virtual camera to use in video meetings"
+    ],
     "type": "Hackathon Projects",
     "language": ["JavaScript", "HTML/CSS"],
     "framework": ["React", "Node.js", "Firebase", "Azure"]
