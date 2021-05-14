@@ -2,6 +2,7 @@
   height: 65vh;
   overflow: hidden;
   scroll-snap-align: center;
+  scroll-snap-type: y mandatory;
   scroll-snap-stop: always;
   display: flex;
   flex-direction: column;

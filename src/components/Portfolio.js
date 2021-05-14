@@ -29,9 +29,11 @@ function Portfolio({ portfolioRef, portfolioInView }) {
       Express: false,
       "Node.js": false,
       ".Net Core": false,
-      MongoDB: false,
       Firebase: false,
       Azure: false,
+      Flask: false,
+      CockroachDB: false,
+      MongoDB: false,
     },
   };
   const [filter, setFilter] = useState({

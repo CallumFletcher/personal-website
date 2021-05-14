@@ -83,5 +83,23 @@
     "type": "Hackathon Projects",
     "language": ["JavaScript", "HTML/CSS"],
     "framework": ["React", "Node.js", "Firebase", "Azure"]
+  },
+  {
+    "title": "StudAI",
+    "links": [
+      {
+        "title": "Github",
+        "href": "https://github.com/StudAI"
+      }
+    ],
+    "time": "May 2021",
+    "description": [
+      "Created Fullstack web application that uses artifical intelligence to match students to study partners for the TOHacks 2021 Hackathon",
+      "Used machine learning agglomerative clustering algorithm written in python to create ideal matches between and other students, as well as between students and tutors",
+      "Created and deployed React frontend using Netlify, with a hybrid Python and Node.js backends hosted on Heroku, using CockroachDB SQL as a backend"
+    ],
+    "type": "Hackathon Projects",
+    "language": ["JavaScript", "Python", "HTML/CSS"],
+    "framework": ["React", "Flask", "Node.js", "Express", "CockroachDB"]
   }
 ]

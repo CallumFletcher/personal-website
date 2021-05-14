@@ -1,4 +1,4 @@
-import { Button, Fade, IconButton } from "@material-ui/core";
+import { Button, Fade } from "@material-ui/core";
 import { Email, GitHub, LinkedIn, Phone } from "@material-ui/icons";
 import React from "react";
 import "./MainContent.css";
