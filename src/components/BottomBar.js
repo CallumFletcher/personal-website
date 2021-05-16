@@ -40,7 +40,8 @@ function BottomBar() {
           )
         }
       >
-        <p className="button-text">Resume</p>
+        {breakpoint && <p className="button-text">Resume</p>}
+
         <DescriptionIcon
           className="material-icon"
           style={breakpoint ? { fontSize: 36 } : { fontSize: 24 }}
@@ -51,7 +52,7 @@ function BottomBar() {
           (window.location.href = "mailto:callum.fletcher@uwaterloo.ca")
         }
       >
-        <p className="button-text">Email</p>
+        {breakpoint && <p className="button-text">Email</p>}
         <EmailIcon
           className="material-icon"
           style={breakpoint ? { fontSize: 36 } : { fontSize: 24 }}

@@ -37,8 +37,8 @@ function PortfolioPreviewItem({ setSelectionPosition, data, setSelectedData }) {
           </div>
 
           <img
-            src="/python-logo.png"
-            alt="python logo"
+            src={data.image}
+            alt="logo"
             style={{
               width: "50%",
               height: "auto",

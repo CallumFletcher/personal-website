@@ -10,7 +10,8 @@
     ],
     "type": "Work Experience",
     "language": ["JavaScript", "C#", "HTML/CSS"],
-    "framework": ["React", "Node.js", ".Net Core"]
+    "framework": ["React", "Node.js", ".Net Core"],
+    "image": "https://firebasestorage.googleapis.com/v0/b/portfolio-website-53dc1.appspot.com/o/healthtii.png?alt=media&token=67bfa006-f3cf-430e-b853-f44ad0b2d094"
   },
   {
     "title": "Portfolio Website",
@@ -28,7 +29,8 @@
     ],
     "type": "Personal Projects",
     "language": ["JavaScript", "HTML/CSS"],
-    "framework": ["React", "Node.js", "Firebase"]
+    "framework": ["React", "Node.js", "Firebase"],
+    "image": "https://firebasestorage.googleapis.com/v0/b/portfolio-website-53dc1.appspot.com/o/website-logo.png?alt=media&token=684246a9-6f68-44bc-bbd0-6d16c4769990"
   },
   {
     "title": "Amplify",
@@ -46,7 +48,8 @@
     ],
     "type": "Hackathon Projects",
     "language": ["JavaScript", "HTML/CSS"],
-    "framework": ["React", "Node.js", "Firebase"]
+    "framework": ["React", "Node.js", "Firebase"],
+    "image": "https://firebasestorage.googleapis.com/v0/b/portfolio-website-53dc1.appspot.com/o/Firebase.png?alt=media&token=9d613e70-3713-4fa3-acf6-4e96981a1bf0"
   },
   {
     "title": "StudyVille",
@@ -64,7 +67,8 @@
     ],
     "type": "Hackathon Projects",
     "language": ["JavaScript", "HTML/CSS"],
-    "framework": ["React", "Node.js", "Express", "MongoDB"]
+    "framework": ["React", "Node.js", "Express", "MongoDB"],
+    "image": "https://firebasestorage.googleapis.com/v0/b/portfolio-website-53dc1.appspot.com/o/node-logo.png?alt=media&token=8aa3f9e2-4858-49da-af7c-46e0680ee91f"
   },
   {
     "title": "Virtual-Me",
@@ -82,7 +86,8 @@
     ],
     "type": "Hackathon Projects",
     "language": ["JavaScript", "HTML/CSS"],
-    "framework": ["React", "Node.js", "Firebase", "Azure"]
+    "framework": ["React", "Node.js", "Firebase", "Azure"],
+    "image": "https://firebasestorage.googleapis.com/v0/b/portfolio-website-53dc1.appspot.com/o/react-logo.png?alt=media&token=fbfc1009-15a2-43db-8672-be1e3524b99c"
   },
   {
     "title": "StudAI",
@@ -100,6 +105,7 @@
     ],
     "type": "Hackathon Projects",
     "language": ["JavaScript", "Python", "HTML/CSS"],
-    "framework": ["React", "Flask", "Node.js", "Express", "CockroachDB"]
+    "framework": ["React", "Flask", "Node.js", "Express", "CockroachDB"],
+    "image": "https://firebasestorage.googleapis.com/v0/b/portfolio-website-53dc1.appspot.com/o/StudAI.png?alt=media&token=a7eb69d2-17b8-48f2-ae5c-53215b24ac23"
   }
 ]

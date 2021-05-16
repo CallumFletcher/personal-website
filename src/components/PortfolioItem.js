@@ -92,8 +92,8 @@ function PortfolioItem({
           </div>
 
           <img
-            src="/python-logo.png"
-            alt="python logo"
+            src={data.image}
+            alt="portfolio logo"
             style={{
               width: "20%",
               height: "auto",
