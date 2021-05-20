@@ -27,14 +27,8 @@ function NavMenu({ aboutInView, portfolioInView, contactInView }) {
   }, []);
   useEffect(() => {
     if (selectedPage?.current) {
-      const {
-        width,
-        height,
-        top,
-        bottom,
-        left,
-        right,
-      } = selectedPage.current.getBoundingClientRect();
+      const { width, height, top, bottom, left, right } =
+        selectedPage.current.getBoundingClientRect();
       setActivePagePosition({
         width,
         height,
@@ -59,27 +53,27 @@ function NavMenu({ aboutInView, portfolioInView, contactInView }) {
     <>
       <div className="active-page" style={activePagePosition}></div>
       {/* pointerEvents: "none" for active page */}
-      <h3
+      <p
         className="page"
         ref={aboutRef}
         style={aboutInView ? { pointerEvents: "none" } : {}}
       >
         <a href="#about">About</a>
-      </h3>
-      <h3
+      </p>
+      <p
         className="page"
         ref={portfolioRef}
         style={portfolioInView ? { pointerEvents: "none" } : {}}
       >
         <a href="#portfolio">My Work</a>
-      </h3>
-      <h3
+      </p>
+      <p
         className="page"
         ref={contactRef}
         style={contactInView ? { pointerEvents: "none" } : {}}
       >
         <a href="#contact">Contact</a>
-      </h3>
+      </p>
     </>
   );
 }

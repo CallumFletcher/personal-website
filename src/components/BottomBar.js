@@ -10,6 +10,7 @@ function BottomBar() {
   return (
     <div className="bottom-bar">
       <IconButton
+        aria-label="github"
         onClick={() =>
           window.open("https://github.com/CallumFletcher", "_blank")
         }
@@ -20,6 +21,7 @@ function BottomBar() {
         />
       </IconButton>
       <IconButton
+        aria-label="linkedin"
         onClick={() =>
           window.open(
             "https://www.linkedin.com/in/callum-fletcher-570a841b7/",
@@ -33,6 +35,7 @@ function BottomBar() {
         />
       </IconButton>
       <Button
+        aria-label="Resume"
         onClick={() =>
           window.open(
             "https://drive.google.com/file/d/1jeVzpBuh0DKiJLUEBXJP3ooMURrzgBBR/view?usp=sharing",
@@ -48,6 +51,7 @@ function BottomBar() {
         />
       </Button>
       <Button
+        aria-label="email"
         onClick={() =>
           (window.location.href = "mailto:callum.fletcher@uwaterloo.ca")
         }
