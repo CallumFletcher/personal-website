@@ -29,10 +29,7 @@ function Contact({ contactRef, contactInView }) {
         </Button>
         <Button
           onClick={() =>
-            window.open(
-              "https://www.linkedin.com/in/callum-fletcher-570a841b7/",
-              "_blank"
-            )
+            window.open("https://www.linkedin.com/in/callumfletcher", "_blank")
           }
         >
           <LinkedIn className="material-icon" />
