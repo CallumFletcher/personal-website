@@ -153,10 +153,9 @@ function Portfolio({ portfolioRef, portfolioInView }) {
               })
                 .sort((a, b) => b.score - a.score)
                 .map((element, index) => (
-                  <Fade in={true} timeout={5000}>
+                  <Fade in={true} timeout={5000} key={index}>
                     <PortfolioPreviewItem
                       data={element}
-                      key={index}
                       setSelectedData={setSelectedData}
                       setSelectionPosition={setSelectionPosition}
                     />
