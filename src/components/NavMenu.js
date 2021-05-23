@@ -14,7 +14,6 @@ function NavMenu({ aboutInView, portfolioInView, contactInView }) {
   const [selectedPage, setSelectedPage] = useState(null);
 
   useEffect(() => {
-    //get active page div to stick to page resize
     function handleResize() {
       setDimensions({
         width: window.innerWidth,

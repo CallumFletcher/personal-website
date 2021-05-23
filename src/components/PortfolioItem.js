@@ -24,7 +24,7 @@ function PortfolioItem({
           padding: 0,
         }),
       1000
-    ); //eslint-disable-next-line
+    ); //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(finalPosition);
   function handleExit() {

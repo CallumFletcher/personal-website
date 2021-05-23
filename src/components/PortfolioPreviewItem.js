@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import "./MainContent.css";
 
 function PortfolioPreviewItem({ setSelectionPosition, data, setSelectedData }) {
-  //TODO: add tags to preview??
   const ref = useRef();
   function handleClick() {
     setSelectedData(data);

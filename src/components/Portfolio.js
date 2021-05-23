@@ -133,7 +133,6 @@ function Portfolio({ portfolioRef, portfolioInView }) {
                 } else if (filter.page === 2) {
                   return element.type === "Work Experience";
                 } else {
-                  //TODO: implement rest of the sorting
                   element.score = 0;
                   if (filter.type[element.type]) {
                     element.score++;
