@@ -1,6 +1,8 @@
 import { Button, Fade } from "@material-ui/core";
 import { Email, GitHub, LinkedIn, Phone } from "@material-ui/icons";
 import React from "react";
+import ContactForm from "./ContactForm";
+import { DevpostIcon } from "./Icons";
 import "./MainContent.css";
 
 function Contact({ contactRef, contactInView }) {
@@ -17,6 +19,7 @@ function Contact({ contactRef, contactInView }) {
           alignItems: "center",
         }}
       >
+        <ContactForm />
         <Button
           onClick={() =>
             (window.location.href = "mailto:callum.fletcher@uwaterloo.ca")
@@ -45,6 +48,14 @@ function Contact({ contactRef, contactInView }) {
           <GitHub className="material-icon" />
           <p className="button-text" style={{ textTransform: "none" }}>
             @CallumFletcher
+          </p>
+        </Button>
+        <Button
+          onClick={() => window.open("https://devpost.com/CallumFletcher")}
+        >
+          <DevpostIcon className="material-icon" />
+          <p className="button-text" style={{ textTransform: "none" }}>
+            DevPost
           </p>
         </Button>
         <Button onClick={() => (window.location.href = "tel:7788381925")}>
