@@ -54,12 +54,12 @@ const ContactForm = (props) => {
   function sendEmail(e) {
     e.preventDefault();
     console.log(e.target);
-    // emailjs.send(
-    //   "service_1ldd0m6",
-    //   "template_gaiqtd6",
-    //   data,
-    //   "user_QzbFYc9s00FrJuK0l97fL"
-    // );
+    emailjs.send(
+      "service_1ldd0m6",
+      "template_gaiqtd6",
+      data,
+      "user_QzbFYc9s00FrJuK0l97fL"
+    );
     console.log(data);
   }
   function handleChange(e) {
@@ -124,9 +124,19 @@ const ContactForm = (props) => {
       />
 
       <Button
+        disabled={!data.from_name || !data.from_contact || !data.message}
         type="submit"
         variant="outlined"
-        style={{ color: "#ffb7f3", borderColor: "#ffb7f3", margin: 5 }}
+        style={
+          !data.from_name || !data.from_contact || !data.message
+            ? {
+                color: "#ffb7f3",
+                borderColor: "#ffb7f3",
+                margin: 5,
+                opacity: 0.5,
+              }
+            : { color: "#ffb7f3", borderColor: "#ffb7f3", margin: 5 }
+        }
       >
         Send Message
       </Button>
