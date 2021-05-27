@@ -6,6 +6,11 @@
   scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.section::-webkit-scrollbar {
+  display: none;
 }
 
 .text {
