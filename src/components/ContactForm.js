@@ -1,8 +1,51 @@
-import { Button, TextField } from "@material-ui/core";
+import { Button, makeStyles, TextField, withStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "&$disabled $notchedOutline": {
+      borderColor: "orange !important",
+    },
+  },
+  input: {
+    color: "#fff",
+  },
+  disabled: {},
+  notchedOutline: {},
+  specialOutline: {
+    borderColor: "pink",
+    borderWidth: 4,
+  },
+}));
+const StyledTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "#ffb7f3",
+    },
+    "& label.Mui": {
+      color: "#fff",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#ffb7f3",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#fff",
+        color: "#fff",
+      },
+      "&:hover fieldset": {
+        borderColor: "#ffb7f3",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#ffb7f3",
+      },
+    },
+  },
+})(TextField);
+
 const ContactForm = (props) => {
+  const classes = useStyles();
   const [data, setData] = useState({
     from_name: "",
     message: "",
@@ -23,33 +66,68 @@ const ContactForm = (props) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
   return (
-    <form onSubmit={sendEmail}>
-      <TextField
+    <form
+      onSubmit={sendEmail}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+      }}
+    >
+      <StyledTextField
+        style={{ color: "#fff", margin: 5 }}
+        variant="outlined"
         fullWidth
         label="Name"
         name="from_name"
         value={data.from_name}
         onChange={handleChange}
+        InputLabelProps={{
+          className: classes.input,
+        }}
+        InputProps={{
+          className: classes.input,
+        }}
       />
-      <TextField
+      <StyledTextField
+        style={{ color: "#fff", margin: 5 }}
+        variant="outlined"
         fullWidth
-        label="Contact Info (Optional)"
+        label="Email"
         name="from_contact"
         value={data.from_contact}
         onChange={handleChange}
+        InputLabelProps={{
+          className: classes.input,
+        }}
+        InputProps={{
+          className: classes.input,
+        }}
       />
-      <TextField
-        style={{ color: "#fff", borderColor: "white" }}
+      <StyledTextField
+        style={{ color: "#fff", margin: 5 }}
         variant="outlined"
         fullWidth
-        multiline
-        row={5}
         label="Message"
         name="message"
+        multiline
+        rows={5}
         value={data.message}
         onChange={handleChange}
+        InputLabelProps={{
+          className: classes.input,
+        }}
+        InputProps={{
+          className: classes.input,
+        }}
       />
-      <Button type="submit" variant="contained" color="primary">
+
+      <Button
+        type="submit"
+        variant="outlined"
+        style={{ color: "#ffb7f3", borderColor: "#ffb7f3", margin: 5 }}
+      >
         Send Message
       </Button>
     </form>
