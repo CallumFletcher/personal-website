@@ -38,7 +38,7 @@ function BottomBar() {
         aria-label="Resume"
         onClick={() =>
           window.open(
-            "https://drive.google.com/file/d/1jeVzpBuh0DKiJLUEBXJP3ooMURrzgBBR/view?usp=sharing",
+            "https://drive.google.com/file/d/1jZzIAXXBZtJ_WskhgeJBYUiEs-meT6yg/view?usp=sharing",
             "_blank"
           )
         }
