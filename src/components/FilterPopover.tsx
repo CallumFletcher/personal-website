@@ -6,6 +6,7 @@ import {
   withStyles,
 } from "@material-ui/core";
 import React from "react";
+import FilterData from "./FilterData";
 
 const StyledCheckbox = withStyles({
   root: {
@@ -15,20 +16,29 @@ const StyledCheckbox = withStyles({
     },
   },
   checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+})((props: any) => <Checkbox color="default" {...props} />);
 
-function FilterPopover({ filter, setFilter }) {
-  const handleChange = (event, section) => {
-    setFilter((prev) => ({
+interface Props {
+  filter: FilterData;
+  setFilter: React.Dispatch<React.SetStateAction<FilterData>>;
+}
+
+const FilterPopover: React.FC<Props> = ({ filter, setFilter }) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    section: keyof FilterData
+  ) => {
+    setFilter((prev: FilterData) => ({
       ...prev,
       page: false,
       [section]: {
-        ...prev[section],
+        ...(prev[section] as object),
         [event.target.name]: event.target.checked,
       },
     }));
   };
   console.log(filter);
+
   return (
     <div
       style={{
@@ -44,14 +54,16 @@ function FilterPopover({ filter, setFilter }) {
           Type
         </FormLabel>
         <FormGroup>
-          {Object.keys(filter.type).map((element, index) => (
+          {Object.keys(filter.type).map((element: string, index: number) => (
             <FormControlLabel
               key={index}
               style={{ color: "white" }}
               control={
                 <StyledCheckbox
-                  checked={filter.type[element]}
-                  onChange={(e) => handleChange(e, "type")}
+                  checked={filter.type[element as keyof typeof filter.type]}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e, "type")
+                  }
                   name={element}
                 />
               }
@@ -74,8 +86,12 @@ function FilterPopover({ filter, setFilter }) {
               style={{ color: "white" }}
               control={
                 <StyledCheckbox
-                  checked={filter.language[element]}
-                  onChange={(e) => handleChange(e, "language")}
+                  checked={
+                    filter.language[element as keyof typeof filter.language]
+                  }
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e, "language")
+                  }
                   name={element}
                 />
               }
@@ -98,8 +114,12 @@ function FilterPopover({ filter, setFilter }) {
               style={{ color: "white" }}
               control={
                 <StyledCheckbox
-                  checked={filter.framework[element]}
-                  onChange={(e) => handleChange(e, "framework")}
+                  checked={
+                    filter.framework[element as keyof typeof filter.framework]
+                  }
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e, "framework")
+                  }
                   name={element}
                 />
               }
@@ -110,6 +130,6 @@ function FilterPopover({ filter, setFilter }) {
       </div>
     </div>
   );
-}
+};
 
 export default FilterPopover;

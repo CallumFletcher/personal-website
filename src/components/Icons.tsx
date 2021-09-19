@@ -1,6 +1,9 @@
 import React from "react";
 
-export function FilterIcon({ className }) {
+interface IconProps {
+  className?: string;
+}
+export const FilterIcon: React.FC<IconProps> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,8 +18,8 @@ export function FilterIcon({ className }) {
       <path d="M26,6v0.233l-8.487,9.43L17,16.233V17v7.764l-2-1V17v-0.767l-0.513-0.57L6,6.233V6H26 M28,4H4v3  l9,10v8l6,3V17l9-10V4L28,4z" />
     </svg>
   );
-}
-export function DevpostIcon({ className }) {
+};
+export const DevpostIcon: React.FC<IconProps> = ({ className }) => {
   return (
     <svg
       // enable-background="new 0 0 64 64"
@@ -36,4 +39,4 @@ export function DevpostIcon({ className }) {
       />
     </svg>
   );
-}
+};

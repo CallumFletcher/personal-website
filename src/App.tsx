@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 import BottomBar from "./components/BottomBar";
 
 function App() {
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
   const [sunHeight, setSunHeight] = useState(200);
   const titleBreakpoint = useMediaQuery("(min-width:750px)");
   const [aboutRef, aboutInView] = useInView({

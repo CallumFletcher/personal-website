@@ -51,7 +51,7 @@ const StyledTextField = withStyles({
   },
 })(TextField);
 
-const ContactForm = (props) => {
+const ContactForm = () => {
   const classes = useStyles();
   const initialData = {
     from_name: "",
@@ -60,7 +60,7 @@ const ContactForm = (props) => {
   };
   const [data, setData] = useState(initialData);
   const [sendSuccess, setSendSuccess] = useState(false);
-  async function sendEmail(e) {
+  async function sendEmail(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     emailjs
       .send(
@@ -78,7 +78,7 @@ const ContactForm = (props) => {
       });
     console.log(data);
   }
-  function handleChange(e) {
+  function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
   return (

@@ -2,7 +2,12 @@ import React from "react";
 import { Fade } from "@material-ui/core";
 import "./MainContent.css";
 
-function About({ aboutRef, aboutInView }) {
+interface Props {
+  aboutRef: React.LegacyRef<HTMLDivElement> | undefined;
+  aboutInView: boolean;
+}
+
+const About: React.FC<Props> = ({ aboutRef, aboutInView }) => {
   return (
     <Fade in={aboutInView} timeout={1000}>
       <div className="section" id="about" ref={aboutRef}>
@@ -13,6 +18,6 @@ function About({ aboutRef, aboutInView }) {
       </div>
     </Fade>
   );
-}
+};
 
 export default About;
