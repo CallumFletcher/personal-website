@@ -5,42 +5,28 @@ import { FilterIcon } from "./Icons";
 import FilterPopover from "./FilterPopover";
 import PortfolioPreviewItem from "./PortfolioPreviewItem";
 import PortfolioItem from "./PortfolioItem";
-import PortfolioData from "../PortfolioData.json";
+import PortfolioDataJson from "../PortfolioData.json";
+import FilterData from "./FilterData";
+import { IItemPosition, IPortfolioItemData } from "./DataInterfaces";
 
-function Portfolio({ portfolioRef, portfolioInView }) {
-  const [selectedData, setSelectedData] = useState(null);
+interface Props {
+  portfolioRef: React.LegacyRef<HTMLDivElement> | undefined;
+  portfolioInView: boolean;
+}
+
+const Portfolio: React.FC<Props> = ({ portfolioRef, portfolioInView }) => {
+  const [selectedData, setSelectedData] = useState<IPortfolioItemData | null>(
+    null
+  );
   const [anchorEl, setAnchorEl] = useState(null);
-  const ref = useRef();
-  const [selectionPosition, setSelectionPosition] = useState(null);
-  const defaultSelection = {
-    type: {
-      "Work Experience": false,
-      "Personal Projects": false,
-      "Hackathon Projects": false,
-    },
-    language: {
-      JavaScript: false,
-      Python: false,
-      "HTML/CSS": false,
-      "C#": false,
-    },
-    framework: {
-      React: false,
-      Express: false,
-      "Node.js": false,
-      ".Net Core": false,
-      Firebase: false,
-      Azure: false,
-      Flask: false,
-      CockroachDB: false,
-      MongoDB: false,
-    },
-  };
-  const [filter, setFilter] = useState({
-    page: 0,
-    ...defaultSelection,
-  });
-  const handleChange = (event, newValue) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [selectionPosition, setSelectionPosition] =
+    useState<IItemPosition | null>(null);
+  const defaultSelection = new FilterData();
+
+  const [filter, setFilter] = useState(defaultSelection);
+  const PortfolioData: Array<IPortfolioItemData> = PortfolioDataJson;
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     console.log(newValue);
     setFilter((prev) => ({
       ...defaultSelection,
@@ -74,7 +60,9 @@ function Portfolio({ portfolioRef, portfolioInView }) {
             <Tab label="Work" style={{ fontWeight: 400, fontSize: 18 }} />
           </Tabs>
           <IconButton
-            onClick={(e) => setAnchorEl(e.currentTarget)}
+            onClick={(e: React.BaseSyntheticEvent) =>
+              setAnchorEl(e.currentTarget)
+            }
             style={{ fontWeight: 400, fontSize: 18, color: "#ffb7f3" }}
           >
             <FilterIcon />
@@ -134,23 +122,23 @@ function Portfolio({ portfolioRef, portfolioInView }) {
                   return element.type === "Work Experience";
                 } else {
                   element.score = 0;
-                  if (filter.type[element.type]) {
+                  if (filter.type[element.type as keyof typeof filter.type]) {
                     element.score++;
                   }
                   element.language.forEach((i) => {
-                    if (filter.language[i]) {
-                      element.score++;
+                    if (filter.language[i as keyof typeof filter.language]) {
+                      element.score && element.score++;
                     }
                   });
                   element.framework.forEach((i) => {
-                    if (filter.framework[i]) {
-                      element.score++;
+                    if (filter.framework[i as keyof typeof filter.framework]) {
+                      element.score && element.score++;
                     }
                   });
                   return element.score;
                 }
               })
-                .sort((a, b) => b.score - a.score)
+                .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
                 .map((element, index) => (
                   <Fade in={true} timeout={5000} key={index}>
                     <PortfolioPreviewItem
@@ -166,6 +154,6 @@ function Portfolio({ portfolioRef, portfolioInView }) {
       </div>
     </Fade>
   );
-}
+};
 
 export default Portfolio;

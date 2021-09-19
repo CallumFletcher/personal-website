@@ -1,12 +1,20 @@
 import { Chip, IconButton } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@material-ui/icons/Close";
-function PortfolioItem({
+import { IItemPosition, IPortfolioItemData } from "./DataInterfaces";
+
+interface Props {
+  initialPosition: IItemPosition;
+  finalPosition: IItemPosition;
+  cancelSelection: () => void;
+  data: IPortfolioItemData | null;
+}
+const PortfolioItem: React.FC<Props> = ({
   initialPosition,
   finalPosition,
   cancelSelection,
   data,
-}) {
+}) => {
   const [position, setPosition] = useState(initialPosition);
 
   useEffect(() => {
@@ -34,7 +42,7 @@ function PortfolioItem({
   return (
     <div
       className="portfolio-item"
-      style={{ ...position, transition: "all 0.4s" }}
+      style={{ ...(position as object), transition: "all 0.4s" }}
     >
       <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -46,7 +54,7 @@ function PortfolioItem({
               paddingLeft: 25,
             }}
           >
-            {data.time}
+            {data?.time}
           </h3>
           <IconButton
             onClick={handleExit}
@@ -71,10 +79,10 @@ function PortfolioItem({
               className="portfolio-title"
               style={{ flexGrow: 1, textAlign: "left" }}
             >
-              {data.title}
+              {data?.title}
             </h1>
             <h3 className="portfolio-subtitle" style={{ textAlign: "left" }}>
-              {data.links.map((element, index) => (
+              {data?.links.map((element, index) => (
                 <a
                   href={element.href}
                   key={index}
@@ -94,7 +102,7 @@ function PortfolioItem({
           </div>
 
           <img
-            src={data.image}
+            src={data?.image}
             alt="portfolio logo"
             style={{
               width: "20%",
@@ -117,7 +125,7 @@ function PortfolioItem({
           }}
         >
           <ul>
-            {data.description.map((element, index) => (
+            {data?.description.map((element, index) => (
               <li key={index} className="portfolio-description">
                 {element}
               </li>
@@ -135,7 +143,7 @@ function PortfolioItem({
             >
               Languages:
             </span>
-            {data.language.map((element, index) => (
+            {data?.language.map((element, index) => (
               <Chip
                 key={index}
                 variant="outlined"
@@ -163,7 +171,7 @@ function PortfolioItem({
             >
               Frameworks/tools:
             </span>
-            {data.framework.map((element, index) => (
+            {data?.framework.map((element, index) => (
               <Chip
                 key={index}
                 variant="outlined"
@@ -181,6 +189,6 @@ function PortfolioItem({
       </div>
     </div>
   );
-}
+};
 
 export default PortfolioItem;

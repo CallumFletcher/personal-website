@@ -5,7 +5,12 @@ import ContactForm from "./ContactForm";
 import { DevpostIcon } from "./Icons";
 import "./MainContent.css";
 
-function Contact({ contactRef, contactInView }) {
+interface Props {
+  contactRef: React.LegacyRef<HTMLDivElement> | undefined;
+  contactInView: boolean;
+}
+
+const Contact: React.FC<Props> = ({ contactRef, contactInView }) => {
   return (
     <Fade in={contactInView} timeout={1000}>
       <div
@@ -90,6 +95,6 @@ function Contact({ contactRef, contactInView }) {
       </div>
     </Fade>
   );
-}
+};
 
 export default Contact;

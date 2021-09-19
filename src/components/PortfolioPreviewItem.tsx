@@ -1,12 +1,36 @@
 import { Chip, Grid } from "@material-ui/core";
 import React, { useRef } from "react";
+import { IItemPosition, IPortfolioItemData } from "./DataInterfaces";
 import "./MainContent.css";
+interface Props {
+  setSelectionPosition: React.Dispatch<
+    React.SetStateAction<IItemPosition | null>
+  >;
+  data: IPortfolioItemData | null;
+  setSelectedData: React.Dispatch<
+    React.SetStateAction<IPortfolioItemData | null>
+  >;
+}
 
-function PortfolioPreviewItem({ setSelectionPosition, data, setSelectedData }) {
-  const ref = useRef();
+const PortfolioPreviewItem: React.FC<Props> = ({
+  setSelectionPosition,
+  data,
+  setSelectedData,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
   function handleClick() {
     setSelectedData(data);
-    setSelectionPosition(ref.current.getBoundingClientRect());
+    if (ref.current) {
+      setSelectionPosition((prev) => ({
+        ...prev,
+        width: ref?.current?.getBoundingClientRect().width,
+        height: ref?.current?.getBoundingClientRect().height,
+        top: ref?.current?.getBoundingClientRect().top,
+        bottom: ref?.current?.getBoundingClientRect().bottom,
+        left: ref?.current?.getBoundingClientRect().left,
+        right: ref?.current?.getBoundingClientRect().right,
+      }));
+    }
   }
 
   return (
@@ -30,13 +54,13 @@ function PortfolioPreviewItem({ setSelectionPosition, data, setSelectedData }) {
               className="portfolio-title"
               style={{ fontSize: 20, fontWeight: 400 }}
             >
-              {data.title}
+              {data?.title}
             </h2>
             {/* <h3 className="portfolio-subtitle">{data.subtitle}</h3> */}
           </div>
 
           <img
-            src={data.image}
+            src={data?.image}
             alt="logo"
             style={{
               width: "50%",
@@ -46,7 +70,7 @@ function PortfolioPreviewItem({ setSelectionPosition, data, setSelectedData }) {
             }}
           />
         </div>
-        {data.language
+        {data?.language
           .filter((element, index) => index < 2)
           .map((element, index) => (
             <Chip
@@ -61,7 +85,7 @@ function PortfolioPreviewItem({ setSelectionPosition, data, setSelectedData }) {
               }}
             />
           ))}
-        {data.framework
+        {data?.framework
           .filter((element, index) => index < 2)
           .map((element, index) => (
             <Chip
@@ -79,6 +103,6 @@ function PortfolioPreviewItem({ setSelectionPosition, data, setSelectedData }) {
       </div>
     </Grid>
   );
-}
+};
 
 export default PortfolioPreviewItem;

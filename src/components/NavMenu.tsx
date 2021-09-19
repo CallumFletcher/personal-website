@@ -1,17 +1,32 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import "./NavMenu.css";
 
-function NavMenu({ aboutInView, portfolioInView, contactInView }) {
+interface Props {
+  aboutInView: boolean;
+  portfolioInView: boolean;
+  contactInView: boolean;
+}
+
+const NavMenu: React.FC<Props> = ({
+  aboutInView,
+  portfolioInView,
+  contactInView,
+}) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [activePagePosition, setActivePagePosition] = useState({
     width: 0,
     height: 0,
     display: "none",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
   });
-  const aboutRef = useRef();
-  const portfolioRef = useRef();
-  const contactRef = useRef();
-  const [selectedPage, setSelectedPage] = useState(null);
+  const aboutRef = useRef<HTMLParagraphElement>(null);
+  const portfolioRef = useRef<HTMLParagraphElement>(null);
+  const contactRef = useRef<HTMLParagraphElement>(null);
+  const [selectedPage, setSelectedPage] =
+    useState<RefObject<HTMLParagraphElement> | null>(null);
 
   useEffect(() => {
     function handleResize() {
@@ -28,18 +43,19 @@ function NavMenu({ aboutInView, portfolioInView, contactInView }) {
     if (selectedPage?.current) {
       const { width, height, top, bottom, left, right } =
         selectedPage.current.getBoundingClientRect();
-      setActivePagePosition({
+      setActivePagePosition((prev) => ({
+        ...prev,
         width,
         height,
         top: top - 10,
         bottom,
         left: left - 10,
         right,
-      });
+      }));
     }
   }, [selectedPage, dimensions]);
   useEffect(() => {
-    function multipleInView(a, b, c) {
+    function multipleInView(a: boolean, b: boolean, c: boolean) {
       return (a && b) || (a && c) || (b && c);
     }
     if (!multipleInView(aboutInView, portfolioInView, contactInView)) {
@@ -75,6 +91,6 @@ function NavMenu({ aboutInView, portfolioInView, contactInView }) {
       </p>
     </>
   );
-}
+};
 
 export default NavMenu;
