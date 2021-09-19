@@ -5,4 +5,3 @@ import firebase from "firebase/app";
 import "firebase/analytics";
 
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
