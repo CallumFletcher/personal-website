@@ -78,6 +78,8 @@ function PortfolioItem({
                 <a
                   href={element.href}
                   key={index}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   style={{
                     color: "#fff",
                     fontSize: 16,
