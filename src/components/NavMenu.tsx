@@ -45,6 +45,7 @@ const NavMenu: React.FC<Props> = ({
         selectedPage.current.getBoundingClientRect();
       setActivePagePosition((prev) => ({
         ...prev,
+        display: "inline",
         width,
         height,
         top: top - 10,
